@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int test_num,X,Y,T;
+    scanf("%d",&T);
+     int arrayX[T], arrayY[T];
+   
+    for(test_num=0; test_num<T; test_num++){
+    scanf("%d%d",&arrayX[test_num],&arrayY[test_num]);
+    
+    }
+   for(test_num=0; test_num<T; test_num++){
+
+    printf("%d\n", arrayY[test_num]/arrayX[test_num]);
+ 
+}
+    return 0;
+}

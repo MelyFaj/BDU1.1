@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int main() {
+long int a, b, c, d;
+scanf("%ld%ld%ld%ld", &a, &b, &c, &d);
+if(a==b && b==c && c==d){printf("3");}
+else if(a==b && b==c || c==d && d==b || a==c && c==d || a==b && b==d || a==b && c==d || a==c && b==d ||a==d && b==c){printf("2");}
+else if(a==b || b==c || c==d || a==d || b==d || a==c){printf("1");}
+else if(a!=b && b!=c && c!=d){printf("0");}
+
+    return 0;
+}//tedious
+
+
+
+
+
+#this one using python
+
+a, b, c, d = input(" ").split()
+
+
+if a==b and b==c and c==d :
+ print (3)
+ 
+elif a==b and b==c or c==d and d==b or a==c and c==d or a==b and b==d or a==b and c==d or a==c and b==d or a==d and b==c :
+ print (2)
+elif a==b or b==c or c==d or a==d or b==d or a==c :
+ print (1)
+elif a!=b and b!=c and c!=d :
+ print (0)
+
