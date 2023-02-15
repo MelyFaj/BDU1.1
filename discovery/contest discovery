@@ -1,1 +1,1 @@
-1. Write the mathematical statement, if possible, inside the printf() function or exactly where you want to use it. The code execution time will be significantly(not so sure about the significance) less.
+1. Write the mathematical statement, if possible, inside the printf() function or exactly where you want to use it instead of in a variable. The code execution time will be significantly(not so sure about the significance) less.
