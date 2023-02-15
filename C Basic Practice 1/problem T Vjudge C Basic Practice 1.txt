@@ -1,0 +1,129 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char username[101]; 
+    
+ scanf("%s", username);
+ int count_uniq_char = 0;
+
+    for (int i = 0; i < strlen(username); i++){
+         int flag = 0;
+         for (int j = 0; j < i; j++){
+              if (username[j] == username[i])
+              {
+                  flag=1;
+                  break;
+              }
+         }
+
+         if (flag==0){
+             count_uniq_char++;
+         }
+    }
+ 
+   count_uniq_char%2==1? printf("IGNORE HIM!"):printf("CHAT WITH HER!");
+ 
+     return 0;
+}
+
+
+
+
+//another one
+
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char username[101]; 
+    
+ scanf("%s", username);
+ int count_uniq_char = 0;
+
+    for (int i = 0; i < strlen(username); i++){
+         int flag = 0;
+         for (int j = 0; j < i; j++){
+              if (username[j] == username[i])
+              {
+                  flag=1;
+                  break;
+              }
+         }
+
+         count_uniq_char=flag==0?count_uniq_char+1:count_uniq_char+0;
+         
+    }
+ 
+   count_uniq_char%2==1? printf("IGNORE HIM!"):printf("CHAT WITH HER!");
+ 
+     return 0;
+}
+
+
+//another other one that took *2 time!!!! very slow! inefficient
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char username[101], temp; 
+    int i,j,count=0;
+ scanf("%s", username);
+ for(i=0; i<strlen(username); i++)
+ {
+     for(j=i+1; j<strlen(username); j++)
+     if(username[i]>username[j])
+     {
+         temp=username[i];
+         username[i]=username[j];
+         username[j]=temp;
+     }
+ }
+for(i=0; i<strlen(username); i++)
+{
+    if(username[i]!=username[i+1])
+    {
+        count++;
+    }
+}
+count%2==1? printf("IGNORE HIM!"):printf("CHAT WITH HER!");
+     return 0;
+}
+
+
+
+//62ms!!!!!!!!!so inefficient
+/*never use user defined functions in contests*/
+#include <stdio.h>
+#include <string.h>
+ char username[101];
+ int count_uniq_char=0;
+int count_uniq_char_function();
+
+int main() {
+         count_uniq_char_function();
+   count_uniq_char%2==1? printf("IGNORE HIM!"):printf("CHAT WITH HER!");
+     return 0;
+}
+
+int count_uniq_char_function()
+{
+    scanf("%s", username);
+    for (int i = 0; i < strlen(username); i++){
+         int flag = 0, j = -1;
+         jump:
+        j++;
+              if (j<i)
+              {
+              if(username[i] == username[j])
+              {
+                  flag=1;
+                 goto jump;
+              }
+              else {goto jump;}
+              }
+         count_uniq_char=flag==0?count_uniq_char+1:count_uniq_char+0;
+    }
+    return count_uniq_char;
+}

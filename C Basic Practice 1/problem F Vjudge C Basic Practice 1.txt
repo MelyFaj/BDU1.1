@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+ int b,a,h;
+ float h2;
+ scanf("%d%d", &b, &a);
+h=(2*a)/b;
+h2=(2.0*a)/b;
+if(h==h2)
+{
+printf("%ld",h);
+}
+ else
+{
+    h=h+1;
+printf("%ld",h);
+}
+    return 0;
+}
+//help taken from sifat2101033
+
+
+//why is it worng ans.
+b, a = [int(b) for b in input(" ").split()]
+h=int((2*a)/b)
+h0=float((2.0*a)/b)
+if h==h0 and a>=1 and a<=pow(10,6) and b>=1 and b<=pow(10,6) :
+ print(int(h))
+elif h!=h0 and a>=1 and a<=pow(10,6) and b>=1 and b<=pow(10,6):
+     h=h+1
+     print(int(h))
+
+#help taken from sifat2101033

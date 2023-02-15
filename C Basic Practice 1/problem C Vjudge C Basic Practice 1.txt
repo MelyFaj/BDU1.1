@@ -1,0 +1,49 @@
+#include<stdio.h>
+int main()
+{
+    short int A, B, C, X;
+    scanf("%hd %hd %hd %hd", &A, &B, &C, &X);
+    if (A>=1 && A<=10)
+    {
+            if (B>=1 && B<=10)
+    {
+            if (C>=1 && C<=10)
+    {
+        if (X>=1 && X<=10)
+    {
+     if(A==X) {
+         printf("Yes");
+     }
+     else if(B==X) {
+         printf("Yes");
+     }
+    else if(C==X) {
+         printf("Yes");
+     }
+     else {
+         printf("No");
+     }
+     }
+    }
+    }
+    }
+    return 0;
+}
+
+//another one
+
+
+#include<stdio.h>
+int main()
+{
+    short int A, B, C, X;
+    scanf("%hd %hd %hd %hd", &A, &B, &C, &X);
+    
+     if(A==X || B==X || C==X) {
+         printf("Yes");
+     }
+     else {
+         printf("No");
+     }
+    return 0;
+}

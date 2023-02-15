@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+    int test_num,N,K,T;
+    scanf("%d",&T);
+     int arrayN[T], arrayK[T];
+   
+    for(test_num=0; test_num<T; test_num++){
+    scanf("%d%d",&arrayN[test_num],&arrayK[test_num]);
+    
+    }
+   for(test_num=0; test_num<T; test_num++){
+       int sqr_num= (arrayN[test_num]) / (arrayK[test_num]);
+      printf("%d\n", sqr_num*sqr_num);
+
+}
+    return 0;
+}
