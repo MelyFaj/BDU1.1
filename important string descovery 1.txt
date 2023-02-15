@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char bought_str[101];
+    int i,j;
+ scanf("%s%n", bought_str, &i);
+ //printf("%d", i);
+ jump:
+ scanf("%s%n", bought_str, &j);
+ if (i!=j-1) goto jump; /*why when for "form", i=4 for the 1st scanf, and j=4+1=5 for the 2nd scanf function???*/
+// printf("hello");
+
+    return 0;
+}
+
+
+// "%n" also counts "enter"
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char bought_str[101];
+    int i,j;
+ scanf("%s%n", bought_str, &i);
+ printf("%d", i);
+
+ scanf("%s%n", bought_str, &j);/*%n also counts "enter"*/
+printf("%d", j);
+
+    return 0;
+}
