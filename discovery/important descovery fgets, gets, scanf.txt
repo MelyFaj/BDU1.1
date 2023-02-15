@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX 5
+int main() {
+    char str[MAX], str_gets[MAX], str_fgets[MAX];
+     gets(str_gets);/*it's not working as i've been told*/
+    // puts(str_gets);
+     /*It is not safe to use because it does not check the array bound.It is used to read string from user until newline character not encountered. We have a character array of 5 characters and input is greater than 5 characters, gets() will read all these characters and store them into variable.Since, gets() do not check the maximum limit of input characters, so at any time compiler may return buffer overflow error.*/
+     
+  //fgets(str_fgets, sizeof(str_fgets), stdin);/*takes any number of letters, if it's less than 5, than it counts the "enter"s, it also counts "spaces" as characters; if it's more than 5, prints and puts 4 letters*/
+ 
+ //scanf("%s", str);
+ /*for scanf(); if input is more than 5, then says "stack smashinf detected": terminated; Aborted. if it's less or equal to five, prints less or equal of 5 letters. takes "spaces" as "\0". Does not count "enter"s.*/
+
+ 
+ //printf("%s", str_gets);//, strlen(str_gets));
+// printf("%s%d", str_fgets, strlen(str_fgets));
+// printf("%s%d", str, strlen(str));
+
+ 
+ 
+
+    return 0;
+}

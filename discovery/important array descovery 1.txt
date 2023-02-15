@@ -1,0 +1,16 @@
+#include <stdio.h>
+int s[80], X,Y,Z,i;
+char str[]="yesno";
+int main(void)
+{
+     for(i=3; i<=5; i++){
+    scanf("%d", &s[i]);
+}
+ for(i=0; i<=2; i++){
+     if(i%2==0){
+ printf("%c%c%c ", str[0], str[1], str[2]);}
+  else{
+ printf("%c%c " , str[3], str[4]);}
+}
+ return 0;
+}
