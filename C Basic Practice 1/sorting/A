@@ -1,0 +1,41 @@
+
+
+
+
+
+
+
+/*my code that doesnt give exactly what the Q wants but I think it's more effiient so i'm keeping it*/
+
+#include <stdio.h>
+
+int main() {
+    short int n=0,num_swaps;
+    short int i;
+  
+    scanf("%hd", &n);
+
+     int a[n];
+    for (i=0; i<n; i++){
+    scanf("%d", &a[i]);
+    }
+  for (int i = 0; i < n; i++) {
+    
+    for (int j = 0; j < i+1; j++) {
+       
+        if (a[j] > a[i]) {
+            int temp;
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+            num_swaps++;
+        }
+    }
+    
+}
+    printf("\nArray is sorted in %hd swaps.", num_swaps);
+    printf("\nFirst Element: %d", a[0]);
+    printf("\nLast Element: %d", a[n-1]);
+
+    return 0;
+}
