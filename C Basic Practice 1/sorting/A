@@ -45,15 +45,12 @@ int temp;
 
 
 /*my code that doesnt give exactly what the Q wants but I think it's more effiient so i'm keeping it*/
-
 #include <stdio.h>
 
 int main() {
-    short int n=0,num_swaps;
+    short int n,num_swaps;
     short int i;
-  
     scanf("%hd", &n);
-
      int a[n];
     for (i=0; i<n; i++){
     scanf("%d", &a[i]);
@@ -69,9 +66,14 @@ int main() {
             a[j] = temp;
             num_swaps++;
         }
+       /* for (int x=0; x<n; x++){
+    printf("%d ", a[x]);}
+    printf(", i=%d, j=%d \n", i,j);*/
     }
     
-}
+} /*printf("\n\n");
+for (i=0; i<n; i++){
+    printf("%d ", a[i]);}*/
     printf("\nArray is sorted in %hd swaps.", num_swaps);
     printf("\nFirst Element: %d", a[0]);
     printf("\nLast Element: %d", a[n-1]);
