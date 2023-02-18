@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+   int a[4]={1,2,3,4};
+   
+    printf("index:%d \n", a);//prints &a[0]
+    printf("index:%d \n", &a);//prints &a[0]
+    printf("index:%d \n", &a[0]);//prints &a[0]
+    printf("index:%d \n", &a[1]);
+    printf("index:%d \n", &a[2]);
+    printf("index:%d \n", &a[3]);
+    printf("index:%d ", &a[4]);
+    return 0;
+}
