@@ -1,0 +1,24 @@
+//it didn't even need sorting. Man! simplify the algorithm by forming logic, don't be decieved by title (note to self)
+#include <stdio.h>
+int main() {
+       int test_num,T, i,n,len,flag=0;
+    scanf("%d",&T);
+    for(test_num=0; test_num<T; test_num++){
+     scanf("%d", &n);
+     int a[n];
+    for (i=0; i<n; i++){
+    scanf("%d", &a[i]);
+    }
+for(i=0; i<n; i++){
+        flag = 0;
+    if(a[i]>a[i+1] && i!=n-1)//Had help from algec jobayer
+{
+        printf("yes\n");
+flag = 1;
+        break;
+    }
+}
+ if(flag!=1){printf("no\n");}
+}
+    return 0;
+}
