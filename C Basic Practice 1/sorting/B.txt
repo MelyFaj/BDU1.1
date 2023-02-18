@@ -1,4 +1,5 @@
 //it didn't even need sorting. Man! simplify the algorithm by forming logic, don't be decieved by title (note to self)
+//just note the output (and also the input format), the rest doesn't matter
 #include <stdio.h>
 int main() {
        int test_num,T, i,n,len,flag=0;
