@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+       int test_num,T,n,flag=0,terminate_flag, i=0, sum=0;
+    scanf("%d",&T);
+    if (T>=1 && T<=2000){
+    for(test_num=0; test_num<T; test_num++){
+
+     scanf("%d", &n);
+     if(n<2 || n>50){exit(0);}
+     int a[n];
+    for (i=0; i<n; i++){
+    scanf("%d", &a[i]);
+    if(a[i]<1 || a[i]>100){
+        exit(0);
+    }
+    }
+flag=0;
+    for (i=0; i<n; i++){
+    if (a[i]==a[i+1] && i<(n-1))
+    {
+        flag++;
+    }
+    else {break;}
+    }
+    if(flag==n-1){printf("NO\n");}
+
+else{
+      printf("YES\n");
+      for (int i = 0; i < n; i++) {
+    for (int j = 0; j < i+1; j++) {
+        if (a[j] < a[i]) {
+            int temp;
+            temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+    }
+}
+     flag=0;
+    for (i=0; i<n; i++){
+    if (a[i]==a[i+1] && i<(n-1)){
+        flag++;
+    }
+    else{break;}
+    }
+
+if(flag>=1){
+        int temp;
+        temp=a[0];
+        a[0]=a[flag+1];
+       a[flag+1]=temp;
+
+       for (i=0; i<n; i++){
+    printf("%d ", a[i]);
+     if(i==n-1){printf("\n");}
+    }
+    }
+
+else
+    {
+        for (i=0; i<n; i++){
+    printf("%d ", a[i]);
+     if(i==n-1){printf("\n");}
+    }
+    }
+    }
+}
+}
+    return 0;
+}
