@@ -1,0 +1,31 @@
+#include <stdio.h>
+int main() {
+       int n,count=0, i, right_hand_sum=0,left_hand_sum=0;
+
+     scanf("%d", &n);
+     int a[n];
+     
+    for (i=0; i<n; i++){
+    scanf("%d", &a[i]);
+    right_hand_sum=right_hand_sum+a[i];
+    }
+ 
+    for (int i = 0; i < n-1; i++) {
+    for (int j = 0; j < n-1-i; j++) {
+        if (a[j] < a[j+1]) {
+            int temp;
+            temp = a[j+1];
+            a[j+1] = a[j];
+            a[j] = temp;
+        }
+    }
+}
+
+for (i=0; i<n; i++){
+left_hand_sum = left_hand_sum+a[i];
+right_hand_sum = right_hand_sum - a[i];
+count++;
+if(left_hand_sum>right_hand_sum){printf("%d", count); break;}
+}
+    return 0;
+}
