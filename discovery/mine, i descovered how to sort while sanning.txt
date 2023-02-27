@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main() {
+int n, i, j, low=0, high, mid, index, data;
+scanf("%d", &n);
+int a[n];
+high=n-1;
+for (i=0; i<n; i++){
+    scanf("%d", &a[i]);
+    for(j=i; j>0; j--){
+    if(j>0 && a[j]<a[j-1]){
+        int temp;
+        temp = a[j];
+        a[j] = a[j-1];
+        a[j-1] = temp;
+    }
+    }
+}
+/*
+for(i=0; i<n; i++){
+    printf("%d ", a[i]);
+}*/
+scanf("%d", &data);
+
+while(low<=high){
+    mid=(low+high)/2;
+    if(data==a[mid]){
+        index=mid;
+        break;
+    }
+    else if(data<a[mid])  high=mid-1;
+    else low=mid+1;
+}
+
+printf("%d", index);
+
+    return 0;
+}
