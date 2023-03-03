@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main() {
+short int n,k, count=0;
+scanf("%hd%hd", &n,&k);
+short int y[n];
+for(int i=0; i<n; i++){
+    scanf("%hd", &y[i]);
+    for(int j=i; j>0; j--){
+    if(j>0 && y[j]<y[j-1]){
+        short int temp;
+        temp = y[j];
+        y[j] = y[j-1];
+        y[j-1] = temp;
+    }
+    }
+}
+for(int i=0; i<n; i+=3){
+if((y[i]+k)<=5 && (y[i+1]+k)<=5 && (y[i+2]+k)<=5 && (i+1)<n && (i+2)<n){
+    count++;
+}
+}
+printf("%hd", count);
+
+    return 0;
+}

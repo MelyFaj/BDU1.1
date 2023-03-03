@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+int main() {
+short int n, count_1=0,count_2=0,count_3=0, w,k=0;
+scanf("%hd", &n);
+short int t[n], t_indexes[n];
+for(int i=0; i<n; i++){
+    scanf("%hd", &t[i]);
+    t_indexes[i]=k+1;
+    k++;
+       for(int j=i; j>0; j--){
+    if(j>0 && t[j]<t[j-1]){
+        int temp;
+        temp = t[j];
+        t[j] = t[j-1];
+        t[j-1] = temp;
+        
+        temp = t_indexes[j];
+        t_indexes[j] = t_indexes[j-1];
+        t_indexes[j-1] = temp;
+    }
+    }
+}
+
+for(int i=0; i<n; i++){
+if(t[i]==1)
+    count_1++;
+    
+else if(t[i]==2)
+    count_2++;
+    
+else
+    count_3++;
+}
+if(count_1<=count_2 && count_1<=count_3) w=count_1;
+else if(count_2<=count_1 && count_2<=count_3) w=count_2;
+else w=count_3;
+printf("%hd", w);
+for(int i=0; i<w; i++){
+    if((i+count_1)<n && (i+count_2)<n)
+    printf("\n%hd %hd %hd", t_indexes[i], t_indexes[i+count_1], t_indexes[i+count_1+count_2]);
+}
+
+    return 0;
+}

@@ -1,0 +1,43 @@
+#include <stdio.h>
+int main() {
+       short int T,n,k;
+    scanf("%hd",&T);
+    for(short int test_num=0; test_num<T; test_num++){
+       
+       
+     scanf("%hd%hd", &n, &k);
+     short int a[n], b[n];
+     int sum =0;
+     
+    for (short int i=0; i<n; i++){
+    scanf("%hd", &a[i]);
+    }
+    
+    for (short int i=0; i<n; i++){
+    scanf("%hd", &b[i]);
+    }
+    
+   for (int i = 0; i < n-1; i++) {
+    for (int j = 0; j < n-1-i; j++) {
+        if (a[j] > a[j+1]) {
+            int temp;
+            temp = a[j+1];
+            a[j+1] = a[j];
+            a[j] = temp;
+            
+            temp = b[j+1];
+            b[j+1] = b[j];
+            b[j] = temp;
+        }
+    }
+   }
+ 
+for(short int i=0; i<n; i++){
+    if((a[i])<=(k+sum)){
+        sum=sum+b[i];
+    }
+}
+printf("%d\n",sum+k);
+}
+    return 0;
+}
