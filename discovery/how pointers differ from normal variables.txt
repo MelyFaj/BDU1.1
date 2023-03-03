@@ -1,0 +1,60 @@
+//pointer variables let's you directly access memory
+#include <stdio.h>
+
+int main() {
+    int a=15;
+    int b=&a;
+    printf("%d :address of a",b);
+    int *c=&a;
+printf("\n%d :address of a",c);
+printf("\n%d :whatever is in that address, stored in c",*c);
+printf("\n%p :0 by hexadecimal value of a",*c);
+printf("\n%p : 0 by ???",c);
+c=&a;
+printf("\n%d :address of a",c);
+printf("\n%d :whatever is in that address, stored in c",*c);
+*c=a;
+printf("\n%d :address of a",c);
+printf("\n%d :address of a",*c);
+c=a;
+printf("\n%d :whatever is in a",c);
+//printf("\n%d :error",*c);
+
+    return 0;
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+
+int main() {
+int a;
+int b=&a;
+int *c=&a;
+    printf("normal variable has the address of a: %d", b);
+    printf("\npointer variable has the address of a: %d", c);
+
+    return 0;
+}
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+#include <stdio.h>
+
+int main() {
+int a;
+printf("initial value of a : %d", a);
+
+int *c=&a;
+ *c=14;
+    printf("\nchanged value using a poniter variable: %d", a);
+    
+    int b=&a;
+ b=35;
+    printf("\ntried to change value of a using a normal varable, but failed: %d", a);
+
+    return 0;
+}
