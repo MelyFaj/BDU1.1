@@ -1,0 +1,284 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Course{
+    float mid;
+    float final;
+    float perf;
+};
+
+struct Student{
+    char name[100];
+    short int roll;
+   struct Course course1;
+   struct Course course2;
+    struct Course course3;
+}std[20];
+
+void struct_student();
+
+int main(){ 
+    int cgpa;
+struct_student_func();
+
+for (int i=0; i<20; i++){
+
+printf("Name: %s\nRoll: %hd\nCGPA: ", std[i].name, std[i].roll);
+
+  cgpa =((((std[i].course1.mid+std[i].course2.mid+std[i].course3.mid)*30/72)+((std[i].course1.final+std[i].course2.final+std[i].course3.final)*50/120)+((std[i].course1.perf+std[i].course2.perf+std[i].course3.perf)*20/100)))/3;
+  
+  if(cgpa>=80 && cgpa<=100) printf("A+");
+  else if(cgpa>=75 && cgpa<80) printf("A");
+  else if(cgpa>=70 && cgpa<74) printf("A-");
+  else if(cgpa>=55 && cgpa<69) printf("B");
+  else if(cgpa>=45 && cgpa<54) printf("C");
+  else if(cgpa>=40 && cgpa<45) printf("D");
+  else  printf("F");
+  
+printf("\n\n");
+}
+return 0;
+}
+
+void struct_student_func(){
+     strcpy(std[0].name, "Zun aid");
+ std[0].roll = 2;
+ std[0].course1.mid = 70;
+ std[0].course2.mid = 67;
+ std[0].course3.mid = 57;
+ std[0].course1.final = 92;
+ std[0].course2.final = 67;
+ std[0].course3.final = 47;
+ std[0].course1.perf = 83;
+ std[0].course2.perf = 75;
+ std[0].course3.perf = 45;
+    
+strcpy(std[01].name, "Raki bul");
+ std[01].roll = 3;
+ std[01].course1.mid = 70;
+ std[01].course2.mid = 67;
+ std[01].course3.mid = 97;
+ std[01].course1.final = 59;
+ std[01].course2.final = 97;
+ std[01].course3.final = 57;
+ std[01].course1.perf = 73;
+ std[01].course2.perf = 75;
+ std[01].course3.perf = 95;
+
+ strcpy(std[02].name, "Mehe di");
+ std[02].roll = 4;
+ std[02].course1.mid = 67;
+ std[02].course2.mid = 83;
+ std[02].course3.mid = 57;
+ std[02].course1.final = 87;
+ std[02].course2.final = 67;
+ std[02].course3.final = 99;
+ std[02].course1.perf = 57;
+ std[02].course2.perf = 70;
+ std[02].course3.perf = 83;
+ 
+ strcpy(std[03].name, "Min hajul");
+ std[03].roll = 6;
+ std[03].course1.mid = 48;
+ std[03].course2.mid = 56;
+ std[03].course3.mid = 39;
+ std[03].course1.final = 46;
+ std[03].course2.final = 46;
+ std[03].course3.final = 47;
+ std[03].course1.perf = 37;
+ std[03].course2.perf = 27;
+ std[03].course3.perf = 38;
+
+ strcpy(std[04].name, "Shari ar");
+ std[04].roll = 7;
+ std[04].course1.mid = 57;
+ std[04].course2.mid = 75;
+ std[04].course3.mid = 98;
+ std[04].course1.final = 66;
+ std[04].course2.final = 55;
+ std[04].course3.final = 45;
+ std[04].course1.perf = 65;
+ std[04].course2.perf = 66;
+ std[04].course3.perf = 56;
+ 
+ strcpy(std[05].name, "Pri tom");
+ std[05].roll = 9;
+ std[05].course1.mid = 67;
+ std[05].course2.mid = 60;
+ std[05].course3.mid = 55;
+ std[05].course1.final = 94;
+ std[05].course2.final = 66;
+ std[05].course3.final = 67;
+ std[05].course1.perf = 57;
+ std[05].course2.perf = 67;
+ std[05].course3.perf = 90;
+ 
+ strcpy(std[06].name, "Red wan");
+ std[06].roll = 10;
+ std[06].course1.mid = 65;
+ std[06].course2.mid = 57;
+ std[06].course3.mid = 46;
+ std[06].course1.final = 64;
+ std[06].course2.final = 59;
+ std[06].course3.final = 45;
+ std[06].course1.perf = 63;
+ std[06].course2.perf = 72;
+ std[06].course3.perf = 42;
+
+ strcpy(std[7].name, "Sri jit");
+ std[7].roll = 17;
+ std[7].course1.mid = 67;
+ std[7].course2.mid = 70;
+ std[7].course3.mid = 57;
+ std[7].course1.final = 97;
+ std[7].course2.final = 67;
+ std[7].course3.final = 46;
+ std[7].course1.perf = 57;
+ std[7].course2.perf = 70;
+ std[7].course3.perf = 43;
+ 
+ strcpy(std[8].name, "Ar pita");
+ std[8].roll = 18;
+ std[8].course1.mid = 70;
+ std[8].course2.mid = 67;
+ std[8].course3.mid = 57;
+ std[8].course1.final = 57;
+ std[8].course2.final = 67;
+ std[8].course3.final = 30;
+ std[8].course1.perf = 93;
+ std[8].course2.perf = 75;
+ std[8].course3.perf = 45;
+ 
+ strcpy(std[9].name, "Wal id");
+ std[9].roll = 19;
+ std[9].course1.mid = 70;
+ std[9].course2.mid = 67;
+ std[9].course3.mid = 97;
+ std[9].course1.final = 57;
+ std[9].course2.final = 67;
+ std[9].course3.final = 37;
+ std[9].course1.perf = 84;
+ std[9].course2.perf = 75;
+ std[9].course3.perf = 75;
+ 
+ strcpy(std[10].name, "Ru pu");
+ std[10].roll = 20;
+ std[10].course1.mid = 70;
+ std[10].course2.mid = 67;
+ std[10].course3.mid = 57;
+ std[10].course1.final = 47;
+ std[10].course2.final = 57;
+ std[10].course3.final = 37;
+ std[10].course1.perf = 73;
+ std[10].course2.perf = 48;
+ std[10].course3.perf = 45;
+ 
+ strcpy(std[11].name, "Shahid ul");
+ std[11].roll = 22;
+ std[11].course1.mid = 70;
+ std[11].course2.mid = 27;
+ std[11].course3.mid = 57;
+ std[11].course1.final = 57;
+ std[11].course2.final = 97;
+ std[11].course3.final = 37;
+ std[11].course1.perf = 63;
+ std[11].course2.perf = 33;
+ std[11].course3.perf = 75;
+ 
+ strcpy(std[12].name, "mehr farj");
+ std[12].roll = 23;
+ std[12].course1.mid = 67;
+ std[12].course2.mid = 23;
+ std[12].course3.mid = 47;
+ std[12].course1.final = 67;
+ std[12].course2.final = 77;
+ std[12].course3.final = 42;
+ std[12].course1.perf = 67;
+ std[12].course2.perf = 97;
+ std[12].course3.perf = 47;
+ 
+ strcpy(std[13].name, "If ty");
+ std[13].roll = 24;
+ std[13].course1.mid = 70;
+ std[13].course2.mid = 87;
+ std[13].course3.mid = 66;
+ std[13].course1.final = 97;
+ std[13].course2.final = 67;
+ std[13].course3.final = 37;
+ std[13].course1.perf = 63;
+ std[13].course2.perf = 75;
+ std[13].course3.perf = 45;
+ 
+ strcpy(std[14].name, "Sra bonee");
+ std[14].roll = 27;
+ std[14].course1.mid = 40;
+ std[14].course2.mid = 37;
+ std[14].course3.mid = 51;
+ std[14].course1.final = 57;
+ std[14].course2.final = 37;
+ std[14].course3.final = 3;
+ std[14].course1.perf = 63;
+ std[14].course2.perf = 55;
+ std[14].course3.perf = 15;
+ 
+ 
+strcpy(std[15].name, "Si jan");
+ std[15].roll = 28;
+ std[15].course1.mid = 70;
+ std[15].course2.mid = 67;
+ std[15].course3.mid = 57;
+ std[15].course1.final = 57;
+ std[15].course2.final = 95;
+ std[15].course3.final = 37;
+ std[15].course1.perf = 63;
+ std[15].course2.perf = 75;
+ std[15].course3.perf = 45;
+ 
+ strcpy(std[16].name, "Argh ya");
+ std[16].roll = 29;
+ std[16].course1.mid = 70;
+ std[16].course2.mid = 67;
+ std[16].course3.mid = 97;
+ std[16].course1.final = 87;
+ std[16].course2.final = 64;
+ std[16].course3.final = 97;
+ std[16].course1.perf = 63;
+ std[16].course2.perf = 75;
+ std[16].course3.perf = 95;
+ 
+ strcpy(std[17].name, "Mum ith");
+ std[17].roll = 31;
+ std[17].course1.mid = 70;
+ std[17].course2.mid = 97;
+ std[17].course3.mid = 57;
+ std[17].course1.final = 57;
+ std[17].course2.final = 87;
+ std[17].course3.final = 44;
+ std[17].course1.perf = 63;
+ std[17].course2.perf = 75;
+ std[17].course3.perf = 45;
+ 
+ strcpy(std[18].name, "Abd hi");
+ std[18].roll = 32;
+ std[18].course1.mid = 78;
+ std[18].course2.mid = 67;
+ std[18].course3.mid = 57;
+ std[18].course1.final = 87;
+ std[18].course2.final = 78;
+ std[18].course3.final = 37;
+ std[18].course1.perf = 83;
+ std[18].course2.perf = 95;
+ std[18].course3.perf = 95;
+ 
+ strcpy(std[19].name, "Ra fi");
+ std[19].roll = 36;
+ std[19].course1.mid = 70;
+ std[19].course2.mid = 57;
+ std[19].course3.mid = 47;
+ std[19].course1.final = 56;
+ std[19].course2.final = 47;
+ std[19].course3.final = 57;
+ std[19].course1.perf = 23;
+ std[19].course2.perf = 25;
+ std[19].course3.perf = 45;
+}
