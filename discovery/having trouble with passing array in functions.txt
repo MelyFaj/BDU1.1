@@ -1,0 +1,35 @@
+//without pointer(*)
+#include <stdio.h>
+void array(int ab[]){
+    //ab[3]={3,2,1};/*why syas "Error"???*/
+    ab[0]=3;
+    ab[1]=2;
+    ab[2]=1;
+
+}
+int main() {
+    int a[3] = {1,2,3};
+    array(a);
+    printf("%d %d %d", a[0],a[1],a[2]);
+
+    return 0;
+}
+
+
+
+//with (*)
+#include <stdio.h>
+void array(int *ab[]){
+    ab[0]=3;/*why the heck this output: 3 0 3*/
+    
+    //ab[1]=2;/*these show error*/
+    //ab[2]=1;
+    //ab[3]={3,2,1};
+}
+int main() {
+    int a[3] = {1,2,3};
+    array(&a);
+    printf("%d %d %d", a[0],a[1],a[2]);
+
+    return 0;
+}

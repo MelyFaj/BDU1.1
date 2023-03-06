@@ -1,0 +1,24 @@
+/*interesting!!!!!!!!!!!!!!!!!!!*/
+#include <stdio.h>
+
+int main() {
+    // Whatever is happening here
+    printf("1. %d   :1\n");
+      printf("2. %p   :2\n");
+        printf("3. %c   :3\n");
+          printf("4. %s   :4\n");
+            printf("5. %he   :5\n");//???
+              printf("6. %o   :6\n");//this one is probably octal but of what/which
+                printf("7. %f   :7\n");
+                  printf("8. %ho   :8\n");//???
+                    printf("9. %i   :9\n");//???
+                      printf("10. %u   :10\n");//???
+                        printf("11. %e   :11\n");//???
+                          printf("12. %g   :12\n");//???
+                            printf("13. %a   :13\n");//???
+                              printf("14. %x   :14\n");//???
+                                printf("15. %n   :15\n");//???
+                        
+
+    return 0;
+}
