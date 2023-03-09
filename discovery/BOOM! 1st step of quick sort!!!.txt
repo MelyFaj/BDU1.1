@@ -1,0 +1,47 @@
+//sweet success
+#include <stdio.h>
+
+int main() {
+short int n;
+register short int sum=0, i,j,k;
+scanf("%hd", &n);
+
+short int a[n];
+
+for(i=0; i<n; i++){
+    scanf("%hd", &a[i]);
+}
+//////////////////////////////////////////////
+for(i=0, k=n-1; k>0;k--){
+    
+if(a[i]>a[k]){
+    
+    int temp=a[i];
+    
+    for(j=i+1; j<n; j++){
+    a[j-1]=a[j];
+    }
+    
+    a[n-1]=temp;
+    
+   ////// -----------------!!!!!!!!!---------------------
+    printf("\n");
+    for (int h=0; h<n; h++){
+    printf("%hd ", a[h]);
+    }
+ printf("\n"); 
+///////----------------!!!!!!!!--------------------------
+ 
+}
+else{ 
+    i++;
+    k++;
+}
+if(i==k) break;
+}
+////////////////////////////////////////////////////
+for (i=0; i<n; i++){
+    printf("%hd ", a[i]);
+}
+    return 0;
+}
