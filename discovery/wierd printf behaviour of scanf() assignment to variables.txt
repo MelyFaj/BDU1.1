@@ -1,0 +1,14 @@
+/*probably prints some boolean value, but of what?*/
+#include <stdio.h>
+
+int main() {
+   int a;
+   /*only one must be active, the rest scanf() assignment must be comment out or youll get segmentation fault or error*/
+   
+   //int b = scanf(" ");
+    //int b = scanf("%d");
+    int b = scanf("%d", &a);
+    printf("%d", b);
+
+    return 0;
+}
