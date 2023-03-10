@@ -22,3 +22,60 @@ else printf("1");
 
     return 0;
 }
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//YES!!!!!!!!!!!!!!!did all he work of string without the string.h or ctype.h!!!!!!!!!!!!!!!!!!!
+
+
+#include <stdio.h>
+
+int main() {
+ 
+    char str1[100], str2[100];
+    int i, n;
+    
+    for(i=0; i<100; i++){
+ scanf("%c", &str1[i]);
+ if (str1[i] == '\n'){
+ str1[i] = '\0';
+        break;
+ }
+    }
+
+ n=i;
+ 
+ for(i=0; i<n; i++) 
+    if(str1[i]<97) 
+        str1[i]=str1[i]+32;
+        
+ for(i=0; i<n; i++){
+ scanf("%c", &str2[i]);
+ if(str2[i]=='\n') i--;
+ }
+ 
+ for(i=0; i<n; i++) 
+    if(str2[i]<97) 
+        str2[i]=str2[i]+32;
+
+
+for(i=0; i<n; i++){
+
+ if(str1[i]<str2[i] && str1[i]!='\0'){
+    printf("-1");
+    break;
+}
+else if (str1[i]>str2[i] && str1[i]!='\0') {
+    printf("1");
+    break;
+}
+}
+if(i==n)    printf("0");
+    return 0;
+}
