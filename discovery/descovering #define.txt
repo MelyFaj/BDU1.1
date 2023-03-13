@@ -1,0 +1,12 @@
+#include <stdio.h> 
+#define tree(x) printf(#x"Descovering the power of #define. write something here, now\n%s", food)
+#define root(x) scanf(#x"%s",&food)
+
+int main() { 
+    char food[101];
+    tree(); 
+    root();
+    tree("i redefined printf() function" MUAHAHAHA!!!!!!!\n);
+    return 0; 
+    
+}
