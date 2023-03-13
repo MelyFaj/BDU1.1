@@ -1,0 +1,11 @@
+// writting HELLO WORLD using C
+#include <stdio.h>
+#define mark(x) #x
+/*"<letter_fragment & spaces>"mark()"<another_letter_fragemnt & spaces>"*/
+int main() {
+
+    printf("C   C  "mark()"CCCCC  "mark()"C      "mark()"C       "mark()"CCC\nC   C  "mark()"C      "mark()"C      "mark()"C      "mark()"C   C\nC   C  "mark()"C      "mark()"C      "mark()"C      "mark()"C   C\nCCCCC  "mark()"CCC    "mark()"C      "mark()"C      "mark()"C   C\nC   C  "mark()"C      "mark()"C      "mark()"C      "mark()"C   C\nC   C  "mark()"C      "mark()"C      "mark()"C      "mark()"C   C\nC   C  "mark()"CCCCC  "mark()"CCCCC  "mark()"CCCCC   "mark()"CCC\n\nC   C  "mark()"CCCCC  "mark()"CCCCC  "mark()"C      "mark()"CCCC\nC   C  "mark()"C   C  "mark()"C   C  C      C   C\nC   C  C   C  CCCCC  C      C   C\nC   C  C   C  CC     C      C   C\nC C C  C   C  C C    C      C   C\nCC CC  C   C  C  C   C      C   C\nC   C  CCCCC  C   C  CCCCC CCCC\n");
+   
+
+    return 0;
+}
