@@ -88,42 +88,64 @@ else if(a[2]>=a[0] && a[2]>=a[1]){
 
 #include <stdio.h>
 #include <math.h>
-#define spew() printf("%d", d)
-#define eat() scanf("%d%d%d", &a[0], &a[1], &a[2])
 
-int main() {
+#define spew() printf("%d", d)
+#define eat() scanf("%d%d%d", &x, &y, &z)
+#define x a[0]
+#define y a[1]
+#define z a[2]
+#define array int a[3]
+#define travel d
+#define START int main()
+#define END return 0
+#define COMMENT(x)
+#define x_lives_farthest if(x>=y && x>=z)
+#define y_lives_farthest else if(y>=x && y>=z)
+#define z_lives_farthest else if(z>=x && z>=y)
+#define z_lives_midway if(y>z)
+#define x_lives_midway if(x>y)
+#define x_lives_midway_and_z_closest if(x>z)
+
+
+
+START {
     
-    int a[3], d;
+    array;
+    int d;
     
     eat();
 
-if(a[0]>=a[1] && a[0]>=a[2]){
+x_lives_farthest{
     
-    if(a[1]>a[2])
-        d = (a[0]-a[1])+abs(a[1]-a[2]);
+    z_lives_midway
+        travel = (x-y)+abs(y-z);
         
     else
-        d = (a[0]-a[2])+abs(a[1]-a[2]);
+        travel = (x-z)+abs(y-z);
 }
 
-else if(a[1]>=a[0] && a[1]>=a[2]){
+y_lives_farthest{
     
-    if(a[0]>a[2])
-        d = (a[1]-a[0])+abs(a[0]-a[2]);
+    x_lives_midway_and_z_closest
+        travel = (y-x)+abs(x-z);
 
     else
-        d= (a[1]-a[2])+abs(a[0]-a[2]);
+        d= (y-z)+abs(x-z);
 }
-else if(a[2]>=a[0] && a[2]>=a[1]){
+z_lives_farthest{
     
-    if(a[0]>a[1])
-        d = (a[2]-a[0])+abs(a[0]-a[1]);
+    x_lives_midway
+        travel = (z-x)+abs(x-y);
   
     else 
-        d = (a[2]-a[1])+abs(a[0]-a[1]);
+        travel = (z-y)+abs(x-y);
 }
 
 spew();
 
-    return 0;
+    END;
 }
+
+
+ 
+COMMENT(haabi jaabi)
