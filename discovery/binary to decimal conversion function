@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <math.h>
+
+int count_char();
+int binary_to_decimal();
+void binary_to_decimal_proccess();
+
+int main() {
+    char binary[101];
+    printf("binary = ");
+    scanf("%s", binary);
+
+    printf("decimal = %d", binary_to_decimal(binary));
+
+    return 0;
+}
+
+int count_char(char *char_arr){
+      int count=0;
+  
+  for(int i=0; ;i++){
+       if(char_arr[i]=='\0') break;
+       count++; 
+   }
+   return count;
+}
+
+int binary_to_decimal(char *binary){
+  
+  binary_to_decimal_proccess(binary);
+  
+  int sum=0;
+
+int n = count_char(binary);
+
+   for(int i=0; i<count_char(binary);i++){
+     
+       n--;
+     
+       if(binary[i]=='0') 
+       sum = sum + 0;
+       
+       else if(binary[i]=='1') 
+       sum = sum + pow(2,n);
+   }
+   return sum;
+}
+
+void binary_to_decimal_proccess(char *binary){
+    printf("proccess = ");
+    
+    int n = count_char(binary);
+    for(int i=0; i<count_char(binary);i++){
+        n--;
+        printf("%c*(2^%d)", binary[i], n);
+        if(i<(count_char(binary))-1)
+        printf("+");
+    }
+    printf("\n");
+}
