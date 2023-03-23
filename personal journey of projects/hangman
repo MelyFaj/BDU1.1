@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+void check(){
+    
+    int j,i,flag=0,n=15;
+    
+    static char str[15][2]={"R_","A_" ,"M_","A_","D_","A_","N_","  ","M_","U_","B_","A_","R_","A_","K_"},guess; 
+    
+    
+    for(i=0; i<n; i++){
+        if(str[i][1]!='_'){
+            flag++;
+            if(flag==15)
+                return;
+        }
+        
+    }
+    
+    for(i=0; i<n; i++)
+    printf("%c", str[i][1]);
+    printf("\n");
+    scanf("%c", &guess);
+    guess = toupper(guess);
+    for(i=0; i<n; i++){
+     if(guess==str[i][0]){
+         str[i][1] = guess;
+         
+     }
+        
+    }
+    for(i=0; i<n; i++)
+    printf("%c", str[i][1]);
+    printf("\n");
+    
+    check();
+}
+
+int main() {
+    printf();
+    check();
+  
+
+    return 0;
+}
