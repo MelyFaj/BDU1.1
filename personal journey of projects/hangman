@@ -70,7 +70,7 @@ int main() {
     
     if(x==1){
         printf("<^_________________<^>__________________^>\nThanks for palying my little game\nBlessed Ramadan!");
-    printf("Thanks for palying my little game\nBlessed Ramadan!"); 
+   
 }
 
 else if(x==3){
