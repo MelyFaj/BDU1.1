@@ -49,7 +49,7 @@ int check(){
 }
 
 int main() {
-    printf("!!!WELCOME!!!\nTo A Game of Hang-man\n(Don't know how to play!, edge it (or opera it or google it)...)\nMy own rule: enter a wrong letter-->get a cross(X), 3 Xs and you're out!\n!Now Begin!\n");
+    printf("!!!Peace be Upon ya'll and welcome!!!\nTo A Game of Hang-man\n(Don't know how to play!, edge it (or opera it or google it)...)\nMy own rule: enter a wrong letter-->get a cross(X), 3 Xs and you're out!\n!Now Begin!\n");
     int x;
     x = check();
     if(x==0)
