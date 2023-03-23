@@ -1,11 +1,13 @@
+/*I know there are bugs. I'm just happy that it runs. If they still annoy you, fix'em yourself*/
+
 #include <stdio.h>
 #include<string.h>
 #include<stdlib.h>
 
-void check(){
+int check(){
     
-    int j,i,flag=0,n=15;
-    
+    int j,i,flag=0, flag_wrong=0, n=15;
+    static int wrong=0;
     static char str[15][2]={"R_","A_" ,"M_","A_","D_","A_","N_","  ","M_","U_","B_","A_","R_","A_","K_"},guess; 
     
     
@@ -13,34 +15,47 @@ void check(){
         if(str[i][1]!='_'){
             flag++;
             if(flag==15)
-                return;
+                return 0;
         }
         
     }
     
     for(i=0; i<n; i++)
-    printf("%c", str[i][1]);
+    printf("%c ", str[i][1]);
     printf("\n");
+    
     scanf("%c", &guess);
     guess = toupper(guess);
     for(i=0; i<n; i++){
      if(guess==str[i][0]){
          str[i][1] = guess;
-         
+         flag_wrong++;
      }
+       
+    }
+    if(flag_wrong==0) {
+        
+        wrong++;
+        if(wrong==6)
+            return 1;
         
     }
+    
     for(i=0; i<n; i++)
-    printf("%c", str[i][1]);
+    printf("%c ", str[i][1]);
     printf("\n");
     
     check();
 }
 
 int main() {
-    printf();
-    check();
-  
+    printf("!!!WELCOME!!!\nTo A Game of Hang-man\n(Don't know how to play!, edge it (or opera it or google it)...)\nMy own rule: enter a wrong letter-->get a cross(X), 3 Xs and you're out!\n!Now Begin!\n");
+    int x;
+    x = check();
+    if(x==0)
+        printf("<^_________________<^>__________________^>");
+  else if(x==1)
+    printf("At least you tried! here's your consolation prize\n___________________\nThe Hanging Tree\n____________________\nJames Newton Howard\n\nAre you, are you comin' to the tree?\nWhere they strung up a man, they say, who murdered three\nStrange things did happen here, no stranger would it be\nIf we met at midnight in the hanging tree\nAre you, are you comin' to the tree\nWhere dead man called out for his love to flee?\nStrange things did happen here, no stranger would it be\nIf we met at midnight in the hanging tree\nAre you, are you comin' to the tree\nWhere I told you to run, so we'd both be free?\nStrange things did happen here, no stranger would it be\nIf we met at midnight in the hanging tree\nAre you, are you comin' to the tree\nWhere necklace of hope, side by side with me?\nStrange things did happen here, no stranger would it be\nIf we met at midnight in the hanging tree\nAre you, are you comin' to the tree\nWhere I told you to run, so we'd both be free?\nStrange things did happen here, no stranger would it be\nIf we met at midnight in the hanging tree\nAre you, are you comin' to the tree?\nWhere they strung up a man, they say, who murdered three\nStrange things did happen here, no stranger would it be\nIf we met at midnight in the hanging tree\nAre you, are you comin' to the tree\nWhere the dead man called out for his love to flee?\nStrange things did happen here, no stranger would it be\nIf we met at midnight in the hanging tree\n\nSongwriters: James Newton Howard, Suzanne Collins, Wesley Keith Schultz, Jeremy Caleb Fraites. For non-commercial use only.\nData From: Musixmatch\n[be grateful taht you weren't Rick Rolled]");
 
     return 0;
 }
