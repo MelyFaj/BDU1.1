@@ -1,0 +1,96 @@
+#include <stdio.h>
+
+void quick_sort(long int a[][2], long int lb, long int ub){
+    if (lb>ub) return;
+    
+    long int pivot = a[lb][0];
+    long int start = lb, end = ub;
+
+    for(start; start<end; start++){
+        if(a[start][0]>pivot){
+            if(a[end][0]<pivot){
+                long int temp[2];
+         for(long int k=0; k<2; k++){
+        temp[k] = a[end][k];
+        a[end][k] = a[start][k];
+        a[start][k] = temp[k];
+        }
+        }
+            end--;  
+            start--;
+        }
+    }
+    if(a[end][0]>pivot){
+        end--;
+        long int temp[2];
+         for(long int k=0; k<2; k++){
+        temp[k] = a[end][k];
+        a[end][k] = a[lb][k];
+        a[lb][k] = temp[k];
+        }
+    }
+    
+    else if(a[end][0]<pivot){
+        long int temp[2];
+         for(long int k=0; k<2; k++){
+        temp[k] = a[end][k];
+        a[end][k] = a[lb][k];
+        a[lb][k] = temp[k];
+        }
+ 
+        
+    }
+    quick_sort(a,lb,end-1);
+    quick_sort(a,end+1,ub);
+}
+
+int main() {
+long int n;
+scanf("%ld", &n);
+
+long int width[n][2], w_indx_printing_order[2*n], row[n][2];
+long int p_n=(2*n)+1;
+char passanger[p_n];
+
+for (long int i=0, k=0; i<n; i++){
+    scanf("%ld", &width[i][0]);
+    width[i][1] = i+1;
+   
+    row[k][0]=row[k][1]='x';
+    k++;
+}
+quick_sort(width,0,n-1);
+
+scanf("%s", passanger);
+
+for(long int i=0; i<p_n-1; i++){
+    if(i==0) {
+        row[i][0]='0';
+        w_indx_printing_order[i] = width[i][1];
+    }
+        
+    else if(passanger[i]=='0'){ 
+        
+        for(long int j=0; j<p_n-1; j++){
+        if(row[j][0]=='x' && row[j][1]=='x'){
+                row[j][0]='0'; 
+                w_indx_printing_order[i] = width[j][1];
+                break;
+        }
+        } 
+    }
+    else if (passanger[i]=='1'){
+        for(long int k=n-1; k>=0; k--){
+        if(row[k][0]=='0' && row[k][1]=='x'){
+                row[k][1]='1'; 
+                w_indx_printing_order[i] = width[k][1];
+                break;
+        }
+        }
+    }
+}
+
+for(long int i=0; i<p_n-1; i++)
+    printf("%ld ", w_indx_printing_order[i]);
+    return 0;
+}
