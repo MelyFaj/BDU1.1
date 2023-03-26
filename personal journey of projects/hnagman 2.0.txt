@@ -6,14 +6,14 @@
 #include<ctype.h>
 #include<time.h>
 
-static int wrong =0,flag=0,word=0;
+static int wrong =0,flag=0;
 static char str[8][15][2]={{"E_","I_" ,"D_","  ","M_","U_","B_","A_","R_","A_","K_"},{"E_", "I_", "D_","  ","A_","L_","  ","F_","T_","R_"},{"P_","R_","A_","Y_"},{"S_","A_","L_","A_","M_"},{"G_","R_","A_","T_","I_","T_","U_","D_","E_"},{"J_","O_","Y_"},{"C_","H_","A_","R_","I_","T_","Y_"},{"G_","A_","T_","H_","E_","R_"}};
 
-int check(){
-//srand(time(0));
-int ub = 7, lb= 0;
+int check(int word){
+
+
     int n=0, flag1=0;
-    word=(rand()% (ub - lb + 1)) + lb;
+
 for(int i=0;  str[word][i][1]!='\0'; i++)
 n++;
 
@@ -77,7 +77,7 @@ void printing_stuff(int x){
 }
 
 else if(x==3)
-    printf("o-oh! Try Again!");
+    printf("Tough word! Huh?");
 
 
 else printf("Error!");
@@ -85,13 +85,14 @@ else printf("Error!");
 
 }
 
-void the_game(){
+void the_game(int word){
+  int ub = 7, lb= 0;
     int enter;
     intro();
 
     int x=0;
    while(!x){
-    x = check();
+    x = check(word);
    }
     printing_stuff(x);
 
@@ -108,15 +109,17 @@ else str[word][i][1]='_';
 
     wrong=0;
     flag=0;
-
-    the_game();
+word=(rand()% (ub - lb + 1)) + lb;
+    the_game(word);
 }
 else return;
 }
 
 int main() {
-
-    the_game();
+srand(time(0));
+   int ub = 7, lb= 0;
+   int word=(rand()% (ub - lb + 1)) + lb;
+    the_game(word);
 
     return 0;
 }
