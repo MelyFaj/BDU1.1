@@ -1,0 +1,78 @@
+#include <stdio.h>
+#include <string.h>
+
+struct Course{
+    float mid;
+    float final;
+    float performance;
+};
+
+struct Student{
+    char first_name[101];
+char last_name[101];
+    char department[5];
+    short int roll;
+   struct Course course1;
+   struct Course course2;
+    struct Course course3;
+    struct Course course4;
+};
+
+int main(){ 
+
+struct Student std[5];
+int line = 1, i=0;
+
+    float cgpa, ttl_mid, ttl_performance, ttl_final;
+        FILE *fptr;
+    
+ fptr = fopen("student_result_detail.txt","r");
+ 
+if(fptr == 0)
+   {
+      printf("Error!");
+      exit(1);
+   }
+    
+    
+while (fscanf(fptr, "%s %s %hd %s %f %f %f %f %f %f %f %f %f %f %f %f\n", std[i].first_name, std[i].last_name, &std[i].roll, std[i].department, &std[i].course1.mid, &std[i].course1.performance, &std[i].course1.final, &std[i].course2.mid, &std[i].course2.performance, &std[i].course2.final, &std[i].course3.mid, &std[i].course3.performance, &std[i].course3.final, &std[i].course4.mid, &std[i].course4.performance, &std[i].course4.final) == 16) {
+
+i++;
+
+    if (line == 5) {
+
+        break;
+    }
+    line++;
+}
+
+
+    printf("Enter total midterm marks: ");
+    scanf("%f" ,&ttl_mid);
+    printf("Enter total performance marks: ");
+    scanf("%f" ,&ttl_performance);
+    printf("Enter total term-final marks: ");
+    scanf("%f" ,&ttl_final);
+
+printf("\n");
+
+
+for (int i=0; i<5; i++){
+
+printf("Name: %s %s\nRoll: %hd\nDepartment: %s\nCGPA: ", std[i].first_name, std[i].last_name, std[i].roll, std[i].department);
+
+  cgpa =((((std[i].course1.mid+std[i].course2.mid+std[i].course3.mid+std[i].course4.mid)*0.3/ttl_mid)+((std[i].course1.final+std[i].course2.final+std[i].course3.final+std[i].course4.final)*0.5/ttl_final)+((std[i].course1.performance+std[i].course2.performance+std[i].course3.performance+std[i].course4.performance)*0.29/ttl_performance)))/4;
+  
+  if(cgpa>=80) printf("A+");
+  else if(cgpa>=75 && cgpa<80) printf("A");
+  else if(cgpa>=70 && cgpa<74) printf("A-");
+  else if(cgpa>=55 && cgpa<69) printf("B");
+  else if(cgpa>=45 && cgpa<54) printf("C");
+  else if(cgpa>=40 && cgpa<45) printf("D");
+  else  printf("F");
+  
+printf("\n\n");
+}
+fclose(fptr); 
+return 0;
+}
