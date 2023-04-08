@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main()
+{
+    int *ptr;
+//printf("%d\n", *ptr); //segmentation fault, as it is pointing to none yet
+printf("%d\n", ptr); //prints 0, as it has no address assigned yet
+
+int *a,b=3,c=4;
+ptr=&b; //_ptr gets access of the address of _b; _ptr points to _b
+//pointer=variable inconsistency, so & type specifier is needed
+
+a=ptr; //_a gets access to evrything that _ptr has access to; _a points to whatever _ptr points to
+//pointer=pointer brotherhood, so no type specifier is needed
+
+printf("%d\n", *a); //now _a points to _b
+    return 0;
+}

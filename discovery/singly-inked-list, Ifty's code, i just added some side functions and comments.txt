@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct Node{
+    int data;
+    struct Node *link;
+};
+int main()
+{
+    struct Node *a=NULL; //~~int *a=0;
+    struct Node *b=NULL;
+    struct Node *c=NULL;
+    a=(struct Node*)malloc(sizeof(struct Node)); //a=&
+    printf("%d\n", *a);
+    b=(struct Node*)malloc(sizeof(struct Node)); //b=someOther&
+    //printf("%d\n", *c); //segmentation falut; as no memory has been allocated for _c yet.
+    c=(struct Node*)malloc(sizeof(struct Node));
+    
+    /*
+    int *a,b=4,c=7,*d;
+d=&c;
+*d=3;
+//printf("%d", c);
+*///the below code is sort a like above
+    a->data=10;
+    b->data=20;
+    c->data=30;
+    
+    
+    /*
+    int *a,b=4,c=7,*d;
+d=&c;
+a=d;
+//printf("%d", *a);
+*///the bellow part is sort a the same as above
+
+    a->link=b; //now our *link of 'a' has access to all the addresses of 'b's members
+    b->link=c;
+    c->link=NULL;
+    while(a!=0)
+    {
+        printf("%d ",a->data);//whatever my (*a).data has is being printed
+        a=a->link;//whatever my (*a).link has, which is evrything of b, including data and *link of b, is being assigned to *a
+    }
+    return 0;
+}
