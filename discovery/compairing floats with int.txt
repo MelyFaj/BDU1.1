@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main() {
+   float n;
+   int m;
+n=4.010; //change that 1 to 0, and see
+m=4;
+int a= (n==m);
+    printf("%d", a);
+    return 0;
+}
