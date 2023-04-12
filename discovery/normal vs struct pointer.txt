@@ -1,0 +1,23 @@
+#include <stdio.h>
+struct M{
+    int d1,d2,d3;
+    char c;
+};
+
+int main() {
+struct M  *p,m;
+int *ord_p;
+p=&m;
+ord_p=&m;
+m.d1=90;
+m.d2=45;
+m.d3=97;
+m.c='t';
+    printf("%p\n%p\n%p\n%p\n%p", p, &m.d1,&m.d2,&m.d3, &m.c);
+   printf("\n%d\n%d\n%d\n%c",p->d1,p->d2,p->d3, p->c);
+   // printf("\n%d\n%d\n%d\n%c",ord_p->d1,ord_p->d2,ord_p->d3, ord_p->c); /*this is incompatible*/
+   printf("\n%d",(*ord_p));/*you can only access the 1st member or field of the struct*/
+
+   
+    return 0;
+}
