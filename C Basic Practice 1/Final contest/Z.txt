@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    short int n,i,d=0;
+    long long int x,b;
+    char sign;
+    scanf("%hd%lld", &n, &x);
+ long long int a[n], sum=x;
+ for(i=0; i<n; i++){
+     scanf("\n%c %lld",&sign,&a[i]);
+     if(sign=='-')
+        x=sum-a[i];
+
+    else if(sign=='+')
+        x=sum+a[i];
+
+    if(sign=='-' && x<0)
+        d++;
+    else if(sign =='-' && x>=0)
+        sum=sum-a[i];
+    else if(sign =='+')
+        sum=sum+a[i];
+
+ }
+
+     printf("%lld %hd ", sum, d);
+    
+    return 0;
+}
