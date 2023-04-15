@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() {
+    short int t,T;
+    scanf("%hd", &T);
+    for(t=0; t<T; t++){
+short int n,i,j;
+long int sum=0;
+scanf("%hd", &n);
+
+long int a[n],x;
+
+for(i=0; i<n; i++){
+    scanf("%ld", &a[i]);
+    if(i==0) 
+        x=a[i];
+    else{
+        if(a[i]<x)
+            x=a[i];
+    }
+}
+for (i=0; i<n; i++){
+    sum=sum+(a[i]-x);
+    
+}
+printf("%ld\n", sum);
+}
+    return 0;
+}

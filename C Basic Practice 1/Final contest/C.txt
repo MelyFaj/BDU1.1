@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+int main() {
+    short int t,T;
+    scanf("%hd", &T);
+    for(t=0; t<T; t++){
+short int n,i,j, flag=0;
+
+scanf("%hd", &n);
+
+short int a[n],b[n];
+
+for(i=0; i<n; i++){
+    scanf("%hd", &a[i]);
+    
+      for( j=i; j>0; j--){
+    if(j>0 && a[j]<a[j-1]){
+        short int temp;
+        temp = a[j];
+        a[j] = a[j-1];
+        a[j-1] = temp;
+    }
+    }
+}
+
+for(i=0; i<n; i++){
+    scanf("%hd", &b[i]);
+    
+      for( j=i; j>0; j--){
+    if(b[j]<b[j-1]){
+        short int temp;
+        temp = b[j];
+        b[j] = b[j-1];
+        b[j-1] = temp;
+    }
+    }
+}
+
+for(i=0; i<n; i++){
+if(b[i]-a[i]!=1 && b[i]!=a[i]){
+    printf("NO\n");
+    flag=1;
+    break;
+}
+}
+if(flag==0)
+    printf("YES\n");
+    }
+    return 0;
+}
