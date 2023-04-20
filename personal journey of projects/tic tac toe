@@ -1,4 +1,8 @@
-#include<stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <ctype.h>
+
 char room[11] = "123456789XO";
 char name[2][101];
 int move=0;
@@ -28,7 +32,7 @@ int check_draw(int check){
     }
 
     if(!flag){
-        printf("Match Draw!!!");
+        printf("Match Draw!!!\n");
         return 0;
     }
 
@@ -37,15 +41,56 @@ int check(){
         if((room[0]==room[1] && room[0]==room[2]) || (room[3]==room[4] && room[3]==room[5]) || (room[6]==room[7] && room[6]==room[8]) || (room[0]==room[3] && room[0]==room[6]) || (room[1]==room[4] && room[1]==room[7]) || (room[2]==room[5] && room[2]==room[8]) || (room[0]==room[4] && room[0]==room[8]) || (room[2]==room[4] && room [2]==room[6]))
             {
             if(move%2==1)
-                printf("%s won the match!<''>", name[0]);
+                printf("%s won the match!\n", name[0]);
             else
-                printf("%s won the match!", name[1]);
+                printf("%s won the match!\n", name[1]);
             return 0;
         }
     return 1;
 }
 
-void player_move(){
+void computer_move(int p){
+    if(p==4){
+        int a[4]={0,2,6,8};
+        return a[rand()%4];
+    }
+    else if(p==0 || p==2 || p==6 || p==8)
+        return 4;
+    else
+        return rand()%8;
+}
+
+void player_move_against_computer(){
+    int p;
+    if(move==0){
+        printf("Enter the room number where you want to make your move: ");
+        scanf("%d", &p);
+    }
+
+    else if(move%2==1){
+        while(room[p]=='X' || room[p]=='O'){
+            p=computer_move(p);
+        }
+    }
+    else if(move%2==0){
+        printf("player 1, Enter room#: ");
+        scanf("%d", &p);
+    }
+
+    if(room[p-1]!='X' && room[p-1]!='O' && p>0 && p<10){
+        if(move%2==0)
+            room[p-1]='X';
+        else
+            room[p-1]='O';
+        move++;
+    }
+    else{
+        printf("Invalid! Try again.\n");
+        player_move();
+    }
+}
+
+void player_move_against_human(){
     int p;
     if(move==0)
         printf("Enter the room number where you want to make your move: ");
@@ -63,18 +108,22 @@ void player_move(){
     }
     else{
         printf("Invalid! Try again.\n");
-        player_move();
+        player_move_against_human();
     }
 }
+
 int main(){
+    srand(time(NULL));
     int a=1, b=1;
+    printf("To play against COMPUTER, enter in name for 2nd player 'computer'.");
     enter_name();
+    if(strcmp("COMPUTER", toupper(name[1]))==0)
     board();
     while(a && b){
     a=check();
     b=check_draw(a);
     if(a==0 || b==0) break;
-    player_move();
+    player_move_against_human();
     board();
     }
     return 0;
