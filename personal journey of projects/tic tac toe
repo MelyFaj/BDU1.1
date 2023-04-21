@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
@@ -6,11 +7,20 @@
 char room[11] = "123456789XO";
 char name[2][101];
 int move=0;
-void enter_name(){
+int enter_name(){
+    char computer[9];
+    int flag=0;
+    printf("To play against COMPUTER, enter in name for 2nd player 'computer'.\n");
     printf("Player 1, plz enter your name here: ");
     scanf("%[^\n]s", name[0]);
     printf("Player 2, plz enter your name here: ");
     scanf(" %[^\n]s", name[1]);
+    for(int i=0; i<8; i++)
+        computer[i]=toupper(name[1][i]);
+
+    if(strcmp("COMPUTER", computer)==0)
+        flag=1;
+return flag;
 }
 void board(){
     printf("\n");
@@ -49,7 +59,7 @@ int check(){
     return 1;
 }
 
-void computer_move(int p){
+int computer_move(int p){
     if(p==4){
         int a[4]={0,2,6,8};
         return a[rand()%4];
@@ -61,16 +71,18 @@ void computer_move(int p){
 }
 
 void player_move_against_computer(){
-    int p;
+    static int p;
     if(move==0){
         printf("Enter the room number where you want to make your move: ");
         scanf("%d", &p);
     }
 
     else if(move%2==1){
-        while(room[p]=='X' || room[p]=='O'){
-            p=computer_move(p);
+        p=computer_move(p-1)+1;
+        while(room[p-1]=='X' || room[p-1]=='O'){
+            p=computer_move(p-1)+1;
         }
+      printf("COMPUTER's move: %d\n", p);
     }
     else if(move%2==0){
         printf("player 1, Enter room#: ");
@@ -86,7 +98,7 @@ void player_move_against_computer(){
     }
     else{
         printf("Invalid! Try again.\n");
-        player_move();
+        player_move_against_human();
     }
 }
 
@@ -114,17 +126,27 @@ void player_move_against_human(){
 
 int main(){
     srand(time(NULL));
-    int a=1, b=1;
-    printf("To play against COMPUTER, enter in name for 2nd player 'computer'.");
-    enter_name();
-    if(strcmp("COMPUTER", toupper(name[1]))==0)
+    int a=1, b=1, flag;
+    char computer[8];
+    flag=enter_name();
     board();
-    while(a && b){
-    a=check();
-    b=check_draw(a);
-    if(a==0 || b==0) break;
-    player_move_against_human();
-    board();
+    if(flag==1){
+        while(a && b){
+        a=check();
+        b=check_draw(a);
+        if(a==0 || b==0) break;
+        player_move_against_computer();
+        board();
+        }
+    }
+    else if(flag==0){
+        while(a && b){
+        a=check();
+        b=check_draw(a);
+        if(a==0 || b==0) break;
+        player_move_against_human();
+        board();
+        }
     }
     return 0;
 }
