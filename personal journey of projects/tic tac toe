@@ -1,18 +1,20 @@
+/*If you find any bug, do send me a s.s. of your entire played-game*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
 
-char room[11] = "123456789XO";
+char room[9] = "123456789";
 char name[2][101];
 int move=0;
 int enter_name(){
     char computer[9];
     int flag=0;
-    printf("To play against COMPUTER, enter in name for 2nd player 'computer'.\n");
+
     printf("Player 1, plz enter your name here: ");
     scanf(" %[^\n]s", name[0]);
+    printf("To play against COMPUTER, enter in name for 2nd player 'computer'.\n");
     printf("Player 2, plz enter your name here: ");
     scanf(" %[^\n]s", name[1]);
     for(int i=0; i<8; i++)
@@ -35,7 +37,7 @@ int check_draw(int check){
     int flag=0;
     if(!check) return 1;
     for(int i=0; i<9; i++){
-        if(room[i]!='X' && room[i]!='O'){
+        if(room[i]!='E' && room[i]!='I' && room[i]!='D' && room[i]!='X'){
             flag=1;
             break;
         }
@@ -48,26 +50,29 @@ int check_draw(int check){
 
 }
 int check(){
-        if((room[0]==room[1] && room[0]==room[2]) || (room[3]==room[4] && room[3]==room[5]) || (room[6]==room[7] && room[6]==room[8]) || (room[0]==room[3] && room[0]==room[6]) || (room[1]==room[4] && room[1]==room[7]) || (room[2]==room[5] && room[2]==room[8]) || (room[0]==room[4] && room[0]==room[8]) || (room[2]==room[4] && room [2]==room[6]))
-            {
-            if(move%2==1)
+        if((room[0]=='E' && room[1]=='I' && room[2]=='D') || (room[3]=='E' && room[4]=='I' && room[5]=='D') || (room[6]=='E' && room[7]=='I' && room[8]=='D') || (room[0]=='E' && room[3]=='I' && room[6]=='D') || (room[1]=='E' && room[4]=='I' && room[7]=='D') || (room[2]=='E' && room[5]=='I' && room[8]=='D') || (room[0]=='E' && room[4]=='I' && room[8]=='D') || (room[2]=='E' && room[4]=='I' && room[6]=='D')){
                 printf("%s won the match!\n", name[0]);
-            else
+                return 0;
+}
+            else if((room[0]==room[1] && room[0]==room[2]) || (room[3]==room[4] && room[3]==room[5]) || (room[6]==room[7] && room[6]==room[8]) || (room[0]==room[3] && room[0]==room[6]) || (room[1]==room[4] && room[1]==room[7]) || (room[2]==room[5] && room[2]==room[8]) || (room[0]==room[4] && room[0]==room[8]) || (room[2]==room[4] && room [2]==room[6]))
+            {
                 printf("%s won the match!\n", name[1]);
-            return 0;
-        }
+                return 0;
+            }
     return 1;
 }
 
 int computer_move(int p){
-    if(p==4){
+    if(p==4 && room[p-1]!='E' && room[p-1]!='I'  && room[p-1]!='D'  && room[p-1]!='X'){
         int a[4]={0,2,6,8};
-        return a[rand()%4];
+        return a[rand()%3];
     }
-    else if(p==0 || p==2 || p==6 || p==8)
+    else if((p==0 || p==2 || p==6 || p==8) && room[p-1]!='E' && room[p-1]!='I'  && room[p-1]!='D'  && room[p-1]!='X')
         return 4;
-    else
-        return rand()%8;
+    else{
+        int a[9]={0,1,2,3,4,5,6,7,8};
+        return a[rand()%8];
+    }
 }
 
 void player_move_against_computer(){
@@ -79,7 +84,7 @@ void player_move_against_computer(){
 
     else if(move%2==1){
         p=computer_move(p-1)+1;
-        while(room[p-1]=='X' || room[p-1]=='O'){
+        while(room[p-1]=='E' || room[p-1]=='I' || room[p-1]=='D'  || room[p-1]=='X'){
             p=computer_move(p-1)+1;
         }
       printf("COMPUTER's move: %d\n", p);
@@ -89,11 +94,18 @@ void player_move_against_computer(){
         scanf("%d", &p);
     }
 
-    if(room[p-1]!='X' && room[p-1]!='O' && p>0 && p<10){
-        if(move%2==0)
+    if(room[p-1]!='E' && room[p-1]!='I'  && room[p-1]!='D'  && room[p-1]!='X' && p>0 && p<10){
+        if(move%2==0){
+            if(move==0 || move==6)
+                room[p-1]='E';
+            else if(move==2 || move==8)
+                room[p-1]='I';
+            else if(move==4)
+                room[p-1]='D';
+        }
+
+        else if(move%2==1)
             room[p-1]='X';
-        else
-            room[p-1]='O';
         move++;
     }
     else{
@@ -111,11 +123,18 @@ void player_move_against_human(){
     else if(move%2==0)
         printf("player 1, Enter room#: ");
     scanf("%d", &p);
-    if(room[p-1]!='X' && room[p-1]!='O' && p>0 && p<10){
-        if(move%2==0)
+    if(room[p-1]!='E' && room[p-1]!='I'  && room[p-1]!='D'  && room[p-1]!='X' && p>0 && p<10){
+        if(move%2==0){
+            if(move==0 || move==6)
+                room[p-1]='E';
+            else if(move==2 || move==8)
+                room[p-1]='I';
+            else if(move==4)
+                room[p-1]='D';
+        }
+
+        else if(move%2==1)
             room[p-1]='X';
-        else
-            room[p-1]='O';
         move++;
     }
     else{
@@ -149,7 +168,7 @@ int the_game(){
       printf("\n\nWould you like to play again?\nEnter 1 for YES & 0 for NO\n");
 scanf("%d", &enter);
 if(enter){
-    strcpy(room, "123456789XO");
+    strcpy(room, "123456789");
     move=0;
     the_game();
 }
@@ -157,6 +176,7 @@ else return 0;
 }
 int main(){
     srand(time(NULL));
+    printf("Welcome to a game of Tic-Tac-Toe!\nPlayer 1, Try to write 'EID' horizontally, vertically or diagonally to WIN!\n");
     the_game();
     return 0;
 }
