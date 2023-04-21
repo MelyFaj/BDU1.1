@@ -12,7 +12,7 @@ int enter_name(){
     int flag=0;
     printf("To play against COMPUTER, enter in name for 2nd player 'computer'.\n");
     printf("Player 1, plz enter your name here: ");
-    scanf("%[^\n]s", name[0]);
+    scanf(" %[^\n]s", name[0]);
     printf("Player 2, plz enter your name here: ");
     scanf(" %[^\n]s", name[1]);
     for(int i=0; i<8; i++)
@@ -123,10 +123,8 @@ void player_move_against_human(){
         player_move_against_human();
     }
 }
-
-int main(){
-    srand(time(NULL));
-    int a=1, b=1, flag;
+int the_game(){
+    int a=1, b=1, flag, enter;
     char computer[8];
     flag=enter_name();
     board();
@@ -148,5 +146,17 @@ int main(){
         board();
         }
     }
+      printf("\n\nWould you like to play again?\nEnter 1 for YES & 0 for NO\n");
+scanf("%d", &enter);
+if(enter){
+    strcpy(room, "123456789XO");
+    move=0;
+    the_game();
+}
+else return 0;
+}
+int main(){
+    srand(time(NULL));
+    the_game();
     return 0;
 }
