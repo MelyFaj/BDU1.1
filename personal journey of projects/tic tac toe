@@ -1,4 +1,8 @@
 /*If you find any bug, do send me a s.s. of your entire played-game*/
+/*
+Game creator: Mehrin Farzana
+Game created on: 21-4-2023
+*/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
