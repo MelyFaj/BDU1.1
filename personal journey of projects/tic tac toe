@@ -8,6 +8,7 @@ Game created on: 21-4-2023
 #include <stdlib.h>
 #include <time.h>
 #include <ctype.h>
+#include<conio.h>
 
 char room[9] = "123456789";
 char name[2][101];
@@ -172,6 +173,7 @@ int the_game(){
       printf("\n\nWould you like to play again?\nEnter 1 for YES & 0 for NO\n");
 scanf("%d", &enter);
 if(enter){
+    system("cls");
     strcpy(room, "123456789");
     move=0;
     the_game();
