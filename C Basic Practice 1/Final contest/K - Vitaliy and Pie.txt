@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int n,buy=0, flag=0;
+    scanf("%d", &n);
+    n=(n<<1)-2;
+    char r[n],k[n];
+    for(int i=0; i<n; i++)
+        scanf(" %c", &r[i]);
+    for(int i=0, j=0; i<n; i+=2){
+        flag=0;
+        if(r[i]!=r[i+1]+32){
+            buy++;
+            k[j]=r[i];
+            j++;
+           for(int l=j; l>=0 && i>0; l--){
+               if(k[l]==r[i+1]+32){
+                   k[l]='#';
+                   buy--;
+                   break;
+               }
+           }
+        }
+    }
+    printf("%d", buy);
+    return 0;
+}
