@@ -1,3 +1,9 @@
+#######################with python
+n=int(input())
+print("Weird" if n%2==1 or (n%2==0 and n>=6 and n<=20) else "Not Weird")
+
+/////////////////////////////////////with C////////////////////////////////
+
 #include<stdio.h>
 int main()
 {
