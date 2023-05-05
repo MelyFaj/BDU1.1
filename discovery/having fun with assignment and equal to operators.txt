@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main() {
+    printf("%d\n", 5==5);//TRUE
+    printf("%d\n", 5==6);//FALSE
+    //printf("%d\n", 5=5);//ERROR
+    int a=5;//ASSIGN
+    printf("%d, %d\n", a, a=6);//ASSIGN
+    printf("%d\n", a==a);
+    return 0;
+}
