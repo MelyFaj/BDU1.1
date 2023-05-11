@@ -3,7 +3,7 @@
 int main() {
     char message[101];
     short int key;
-    printf("Enter non-spaced-msg<ENTER>integer key\n---------------------------------------\n");
+    printf("Enter msg<ENTER>integer key\n---------------------------------------\n");
     scanf(" %[^\n]s", message);
     scanf("%hd", &key);
 
