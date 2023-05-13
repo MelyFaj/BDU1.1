@@ -1,0 +1,24 @@
+/*CRC algorithm for sender end*/
+#include <stdio.h>
+int main() {
+
+    int data, divisor, divisor_bit_num=1, data_bit_num=1, remainder, msb=1;
+    printf("Enter Data & Divisor\n---------------------------------------\n");
+    scanf(" %d%d", &data, &divisor);
+    for(int i=1; i<data; i++){
+        if(divisor>>i != 0) divisor_bit_num++;
+        if(data>>i != 0) data_bit_num++;
+        else if (data>>i == 0) break;
+    }
+
+        data = data<<(divisor_bit_num-1);
+    data_bit_num += divisor_bit_num-1;
+    remainder = data;
+    for(int i=0; i<=(data_bit_num - divisor_bit_num); i++){
+        if(msb==1)
+            remainder = remainder ^ (divisor<<(data_bit_num - divisor_bit_num - i));
+        msb = remainder>>(data_bit_num-2-i);
+    }
+    printf("%d\n", remainder);
+    return 0;
+}
