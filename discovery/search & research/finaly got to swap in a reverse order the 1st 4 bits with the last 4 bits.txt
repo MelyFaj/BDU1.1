@@ -1,0 +1,31 @@
+#include <stdio.h>
+/*
+n(3)    =       00000000 00000011
+128     =       00000000 10000000
+192     =       00000000 11000000
+*/
+int main() {
+    unsigned int n,x;
+    scanf("%u", &n);
+    for(int i=0; i<4; i++){
+       x = n & (1 << i);//checks whether my i^th bit from the right is ON or OFF
+       if(n & (128 >> i)){//if i^th bit from the left is ON
+           n |= 1<<i;//turn ON the i^th bit from the right
+           if(!x)//if i^th bit from the right is OFF
+            n &= ~(1<<(7-i));//turn ON the i^th bit from the left
+           //else, don't care
+
+       }
+       else{
+           //n |= 1<<(7-i);
+           n &= ~(1<<i);
+           if(x)
+            n |= 1<<(7-i);
+       }
+
+    }
+    printf("%u\n", n);
+
+
+    return 0;
+}
