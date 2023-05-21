@@ -1,3 +1,26 @@
+///////instant idea of mine////////////
+#include <stdio.h>
+int main() {
+    long int b,a,h;
+    double h2;
+    scanf("%ld%ld", &b, &a);
+    h2=((double)(2*a)/b)*10;
+    h=((2*a)/b)*10;
+    if(h==h2)
+    {
+        h/=10;
+        printf("%ld",h);
+    }
+     else
+    {
+        h/=10;  
+        h=h+1;
+        printf("%ld",h);
+    }
+    return 0;
+}
+////////////^^^^^^^^^^^^/////////////////
+
 #include <stdio.h>
 #include <math.h>
 int main() {
