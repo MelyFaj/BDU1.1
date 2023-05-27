@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Student{
+    short int roll;
+    int cgpa;
+};
+
+int main(){
+    struct Student std[5];
+    for(int i=0; i<5; i++){
+        std[i].roll = random()%5;
+        std[i].cgpa = random()%50;
+    }
+    for(int i=0; i<5; i++){
+        printf("%d %d\n", std[i].roll, std[i].cgpa);
+    }
+    printf("----------\n");
+    int n=5;
+    for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-i-1; j++){
+            if(std[j].cgpa>std[j+1].cgpa){
+                struct Student temp = std[j];
+                std[j] = std[j+1];
+                std[j+1] = temp;
+            }
+        }
+    }
+  for(int i=0; i<5; i++){
+        printf("%d %d\n", std[i].roll, std[i].cgpa);
+    }
+    return 0;
+}
