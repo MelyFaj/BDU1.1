@@ -18,19 +18,19 @@ struct Student{
     char grade[3];
 };
 
-void print_std_info(struct Student std[], int cgpa[], int n){
+void print_std_info(struct Student std[], float cgpa[], int n){
     for(int i=0; i<n; i++){
-        printf("Final Grade: %s (%f)", std[i].grade, cgpa[i]);
+        printf("Final Grade: %s (%.2f)", std[i].grade, cgpa[i]);
         printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[i].first_name, std[i].last_name, std[i].department, std[i].roll);
     }
 }
 
-void bubble_sort(struct Student std[], int a[], int n){
+void bubble_sort(struct Student std[], float a[], int n){
     int count_swap = 0;
     for(int i=0; i<n-1; i++){
         for(int j=0; j<n-i-1; j++){
-            if(a[j]>a[j+1]){
-                int temp = a[j];
+            if(a[j]<a[j+1]){
+                float temp = a[j];
                 a[j] = a[j+1];
                 a[j+1] = temp;
 
@@ -43,7 +43,7 @@ void bubble_sort(struct Student std[], int a[], int n){
         }
     }
     printf("Bubble sort took %d swaps\n", count_swap);
-    pritn_std_info(std, a, n);
+    print_std_info(std, a, n);
 }
 
 int smallest(int a[], int lb, int n){
@@ -56,7 +56,7 @@ int smallest(int a[], int lb, int n){
     }
     return least_indx;
 }
-void selection_sort(struct Student std[], int a[], int n){
+void selection_sort(struct Student std[], int a[], int lb, int n){
     static int count_swap=0;
     if(lb>=n) return;
     int least_indx = smallest(a, lb, n);
@@ -70,9 +70,9 @@ void selection_sort(struct Student std[], int a[], int n){
     std[least_indx] = temp_st;
 
     count_swap++;
-    selection_sort(a, lb+1, n);
+    selection_sort(std, a, lb+1, n);
     printf("Selection sort took %d swaps\n", count_swap);
-    pritn_std_info(std, a, n);
+    print_std_info(std, a, n);
 }
 
 void insertion_sort(struct Student std[], int a[], int n){
@@ -91,11 +91,11 @@ void insertion_sort(struct Student std[], int a[], int n){
         }
     }
     printf("Insertion sort took %d swaps\n", count_swap);
-    pritn_std_info(std, a, n);
+    print_std_info(std, a, n);
 }
 
-void binary_search(int a[], int n, int d){
-    int count = 0, m, l=0, h = n, d;
+void binary_search(struct Student std[], int a[], int n, int cgpa){
+    int count = 0, m, l=0, h = n, d=cgpa;
     while(l<=h){
         m=(l+h)/2;
         count++;
@@ -107,12 +107,12 @@ void binary_search(int a[], int n, int d){
         else h=m-1;
     }
     printf("Binary search took %d searches\n", count);
-    printf("Final Grade: %s (%f)", std[m].grade, cgpa[m]);
+    printf("Final Grade: %s (%f)", std[m].grade, a[m]);
     printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[m].first_name, std[m].last_name, std[m].department, std[m].roll);
 
 }
 
-void linear_search(int a[], int n, int d){
+void linear_search(struct Student std[], int a[], int n, int d){
     int count = 0;
     for(--n; n>=0; n--){
         count++;
@@ -121,7 +121,7 @@ void linear_search(int a[], int n, int d){
         }
     }
     printf("Linear search took %d searches\n", count);
-    printf("Final Grade: %s (%f)", std[n].grade, cgpa[n]);
+    printf("Final Grade: %s (%f)", std[n].grade, a[n]);
     printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[n].first_name, std[n].last_name, std[n].department, std[n].roll);
 
 
@@ -132,7 +132,6 @@ int main(){
     struct Student std[5];
     int line = 1, i=0;
     float cgpa[5];
-    char cgpa_str[5][3];
     FILE *fptr;
 
     fptr = fopen("student_result_detail.txt","r");
@@ -172,7 +171,26 @@ int main(){
         printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[i].first_name, std[i].last_name, std[i].department, std[i].roll);
 
     }
-    bubble_sort(cgpa, 5, std);
+    printf("---------------------------------------");
+    bubble_sort(std, cgpa, 5);
+    printf("---------------------------------------\n");
+    for (int i=0; i<5; i++){
+
+        printf("Final Grade:  ");
+
+        cgpa[i] =((((std[i].course1.mid+std[i].course2.mid+std[i].course3.mid+std[i].course4.mid)*0.3)+((std[i].course1.final_+std[i].course2.final_+std[i].course3.final_+std[i].course4.final_)*0.5)+((std[i].course1.performance+std[i].course2.performance+std[i].course3.performance+std[i].course4.performance)*0.29)))/4;
+
+        if(cgpa[i]>=80){ printf("A+ (%.2f)", cgpa[i]); strcpy(std[i].grade, "A+");}
+        else if(cgpa[i]>=75 && cgpa[i]<80){ printf("A (%.2f)", cgpa[i]); strcpy(std[i].grade, "A");}
+        else if(cgpa[i]>=70 && cgpa[i]<75){ printf("A- (%.2f)", cgpa[i]); strcpy(std[i].grade, "A-");}
+        else if(cgpa[i]>=55 && cgpa[i]<70){ printf("B (%.2f)", cgpa[i]); strcpy(std[i].grade, "B");}
+        else if(cgpa[i]>=45 && cgpa[i]<55){ printf("C (%.2f)", cgpa[i]); strcpy(std[i].grade, "C");}
+        else if(cgpa[i]>=40 && cgpa[i]<45){ printf("D (%.2f)", cgpa[i]); strcpy(std[i].grade, "D");}
+        else{  printf("F (%.2f)", cgpa[i]); strcpy(std[i].grade, "F");}
+
+        printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[i].first_name, std[i].last_name, std[i].department, std[i].roll);
+
+    }
     fclose(fptr);
     return 0;
 }
