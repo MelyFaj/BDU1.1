@@ -99,7 +99,7 @@ void insertion_sort(struct Student std[], float a[], int n){
 
 void sort_roll(struct Student std[], float a[], int n){
     for(int i=1; i<n; i++){
-        for(int j=i-1; j>=0 && std[j+1].roll>std[j].roll; j--){
+        for(int j=i-1; j>=0 && std[j+1].roll<std[j].roll; j--){
             float tmp = a[j];
             a[j] = a[j+1];
             a[j+1] = tmp;
@@ -109,24 +109,29 @@ void sort_roll(struct Student std[], float a[], int n){
             std[j+1] = temp_st;
         }
     }
+    print_std_info(std, a, n);
 }
 void binary_search(struct Student std[], float a[], int n, int roll){
-    sort_roll(std, a[], n);
-    int count = 0, m, l=0, h = n, d=roll;
+    sort_roll(std, a, n);
+    int count = 0, m, l=0, h = n, d=roll, flag=0;
     while(l<=h){
         m=(l+h)/2;
         count++;
         if(std[m].roll==d){
             printf("index: %d" , m);
+            flag = 1;
             break;
         }
         else if (std[m].roll<d) l=m+1;
         else h=m-1;
     }
-    printf("Binary search took %d searches\n", count);
-    printf("Final Grade: %s (%f)", std[m].grade, a[m]);
-    printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[m].first_name, std[m].last_name, std[m].department, std[m].roll);
-
+    if(!flag)
+        printf("Not found");
+    else{
+        printf("Binary search took %d searches\n", count);
+        printf("Final Grade: %s (%f)", std[m].grade, a[m]);
+        printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[m].first_name, std[m].last_name, std[m].department, std[m].roll);
+    }
 }
 
 void linear_search(struct Student std[], float a[], int n, int d){
@@ -188,10 +193,10 @@ int main(){
         printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[i].first_name, std[i].last_name, std[i].department, std[i].roll);
 
     }
-    printf("---------------------------------------");
+    printf("---------------------------------------\n");
     /*bubble_sort(std, cgpa, 5);*/
     /*selection_sort(std, cgpa, 0, 5);*/
-    insertion_sort(std, cgpa, 5);
+    /*insertion_sort(std, cgpa, 5);*/
     int search_roll;
     scanf("%d", &search_roll);
     binary_search(std, cgpa, 5, search_roll);
