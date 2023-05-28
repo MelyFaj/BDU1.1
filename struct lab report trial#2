@@ -109,16 +109,17 @@ void sort_roll(struct Student std[], float a[], int n){
             std[j+1] = temp_st;
         }
     }
-    print_std_info(std, a, n);
 }
-void binary_search(struct Student std[], float a[], int n, int roll){
+void binary_search(struct Student std[], float a[], int n){
     sort_roll(std, a, n);
-    int count = 0, m, l=0, h = n, d=roll, flag=0;
+    int count = 0, m, l=0, h = n, d, flag=0;
+    scanf("%d", &d);
     while(l<=h){
         m=(l+h)/2;
         count++;
         if(std[m].roll==d){
-            printf("index: %d" , m);
+            printf("Binary search took %d searches\n", count);
+            printf("index: %d\n" , m);
             flag = 1;
             break;
         }
@@ -128,22 +129,22 @@ void binary_search(struct Student std[], float a[], int n, int roll){
     if(!flag)
         printf("Not found");
     else{
-        printf("Binary search took %d searches\n", count);
-        printf("Final Grade: %s (%f)", std[m].grade, a[m]);
+        printf("Final Grade: %s (%.2f)", std[m].grade, a[m]);
         printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[m].first_name, std[m].last_name, std[m].department, std[m].roll);
     }
 }
 
-void linear_search(struct Student std[], float a[], int n, int d){
-    int count = 0;
+void linear_search(struct Student std[], float a[], int n){
+    int count = 0, search_roll;
+    scanf("%d", &search_roll);
     for(--n; n>=0; n--){
         count++;
-        if(a[n] == d){
+        if(std[n].roll == d){
             break;
         }
     }
     printf("Linear search took %d searches\n", count);
-    printf("Final Grade: %s (%f)", std[n].grade, a[n]);
+    printf("Final Grade: %s (%.2f)", std[n].grade, a[n]);
     printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[n].first_name, std[n].last_name, std[n].department, std[n].roll);
 
 
@@ -181,15 +182,15 @@ int main(){
         printf("Final Grade:  ");
 
         cgpa[i] =((((std[i].course1.mid+std[i].course2.mid+std[i].course3.mid+std[i].course4.mid)*0.3)+((std[i].course1.final_+std[i].course2.final_+std[i].course3.final_+std[i].course4.final_)*0.5)+((std[i].course1.performance+std[i].course2.performance+std[i].course3.performance+std[i].course4.performance)*0.29)))/4;
-
-        if(cgpa[i]>=80){ printf("A+ (%.2f)", cgpa[i]); strcpy(std[i].grade, "A+");}
-        else if(cgpa[i]>=75 && cgpa[i]<80){ printf("A (%.2f)", cgpa[i]); strcpy(std[i].grade, "A");}
-        else if(cgpa[i]>=70 && cgpa[i]<75){ printf("A- (%.2f)", cgpa[i]); strcpy(std[i].grade, "A-");}
-        else if(cgpa[i]>=55 && cgpa[i]<70){ printf("B (%.2f)", cgpa[i]); strcpy(std[i].grade, "B");}
-        else if(cgpa[i]>=45 && cgpa[i]<55){ printf("C (%.2f)", cgpa[i]); strcpy(std[i].grade, "C");}
-        else if(cgpa[i]>=40 && cgpa[i]<45){ printf("D (%.2f)", cgpa[i]); strcpy(std[i].grade, "D");}
+        cgpa[i] = (cgpa[i]/100.00)*4.00;
+        if(cgpa[i]>=3.51){ printf("A+ (%.2f)", cgpa[i]); strcpy(std[i].grade, "A+");}
+        else if(cgpa[i]>=3.00 && cgpa[i]<3.51){ printf("A (%.2f)", cgpa[i]); strcpy(std[i].grade, "A");}
+        else if(cgpa[i]>=2.51 && cgpa[i]<3.00){ printf("A- (%.2f)", cgpa[i]); strcpy(std[i].grade, "A-");}
+        else if(cgpa[i]>=2.00 && cgpa[i]<2.51){ printf("B (%.2f)", cgpa[i]); strcpy(std[i].grade, "B");}
+        else if(cgpa[i]>=1.51 && cgpa[i]<2.00){ printf("C (%.2f)", cgpa[i]); strcpy(std[i].grade, "C");}
+        else if(cgpa[i]>=1.00 && cgpa[i]<1.51){ printf("D (%.2f)", cgpa[i]); strcpy(std[i].grade, "D");}
         else{  printf("F (%.2f)", cgpa[i]); strcpy(std[i].grade, "F");}
-
+        
         printf("\nName: %s %s\nDepartment: %s\nRoll: %hd\n\n", std[i].first_name, std[i].last_name, std[i].department, std[i].roll);
 
     }
@@ -197,9 +198,8 @@ int main(){
     /*bubble_sort(std, cgpa, 5);*/
     /*selection_sort(std, cgpa, 0, 5);*/
     /*insertion_sort(std, cgpa, 5);*/
-    int search_roll;
-    scanf("%d", &search_roll);
-    binary_search(std, cgpa, 5, search_roll);
+    /*binary_search(std, cgpa, 5);*/
+    linear_search(std, cgpa, 5);
     fclose(fptr);
     return 0;
 }
