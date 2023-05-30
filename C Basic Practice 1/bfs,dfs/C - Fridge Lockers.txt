@@ -1,0 +1,26 @@
+#include <stdio.h>
+int main() {
+    int n, m, t, T, cost;
+    scanf("%d", &T);
+    for(t=0; t<T; t++){
+        cost=0;
+        scanf("%d %d", &n, &m);
+        int a[n];
+        for(int i=0; i<n; i++){
+            scanf("%d", &a[i]);
+            cost = cost + (a[i]<<1);
+        }
+        if(n>m || n==2)
+            printf("-1\n");
+        else{
+            printf("%d\n", cost);
+            for(int i=0; i<n; i++){
+                if(i<n-1)
+                    printf("%d %d\n", i+1, i+2);
+                else
+                    printf("%d %d\n", 1, i+1);
+            }
+        }
+    }
+    return 0;
+}
