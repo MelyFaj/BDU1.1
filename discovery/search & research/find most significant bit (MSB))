@@ -4,6 +4,6 @@ int main(){
     long int n, msb;
     scanf("%ld", &n);
     msb = 1<<((int)(log(n)/log(2)));
-    printf("%d", n-msb+1);
+    printf("%d", msb);
     return 0;
 }
