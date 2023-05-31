@@ -1,0 +1,18 @@
+#include <stdio.h>
+int main() {
+    long int n, m, a,b,c,d;
+    short int t,T;
+    scanf("%hd", &T);
+    for(t=0; t<T; t++){
+        scanf("%ld %ld", &n, &m);
+        scanf("%ld%ld%ld%ld", &a, &b, &c, &d);
+            
+        if(a==1 && b==1 || a==n && b==1 || a==1 && b==m || a==n && b==m || c==1 && d==1 || c==n && d==1 || c==1 && d==m || c==n && d==m)
+            printf("2\n");
+        else if(a==1 || b==1 || a==n || b==m || c==1 || d==1 || c==n || d==m)
+            printf("3\n");
+        else
+            printf("4\n");
+    }
+    return 0;
+}
