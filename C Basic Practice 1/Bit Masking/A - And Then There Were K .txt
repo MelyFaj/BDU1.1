@@ -1,0 +1,13 @@
+#include<stdio.h>
+#include<math.h>
+int main() {
+    long int x, msb_pos;
+    int t,T;
+    scanf("%d",&T);
+    for(t=0; t<T; t++){
+        scanf("%ld", &x);
+        msb_pos = (long int)floor(log(x)/log(2));
+        printf("%d\n", (1<<msb_pos)-1);
+    }
+    return 0;
+}
