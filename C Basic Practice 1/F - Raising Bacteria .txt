@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+    long int x, i,j, msb_pos;
+    int count=0;
+    scanf("%ld", &x);
+    msb_pos = (long int)floor((log(x)/log(2)));
+    for(i=x, j=0; j<=msb_pos; i=x&(1<<j), j++){
+        if(i)
+            count++;
+    }
+    printf("%d", count);
+    return 0;
+}
