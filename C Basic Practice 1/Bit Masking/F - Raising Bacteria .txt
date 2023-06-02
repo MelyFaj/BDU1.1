@@ -1,3 +1,4 @@
+/*https://codeforces.com/contest/579*/
 #include <stdio.h>
 #include <math.h>
 int main() {
