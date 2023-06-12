@@ -12,6 +12,16 @@ Game created on: 21-4-2023
 char room[9] = "123456789";
 char name[2][101];
 int move=0;
+
+int enter_name();
+void board();
+int check_draw();
+int check();
+int computer_move();
+void player_move_against_computer();
+void player_move_against_human();
+int the_game();
+
 int enter_name(){
     char computer[9];
     int flag=0;
@@ -26,7 +36,7 @@ int enter_name(){
 
     if(strcmp("COMPUTER", computer)==0)
         flag=1;
-return flag;
+    return flag;
 }
 void board(){
     printf("\n");
