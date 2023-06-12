@@ -25,6 +25,7 @@ int enter_name();
 int main(){
     srand(time(NULL));
     printf("Welcome to a game of Tic-Tac-Toe!\nPlayer 1, Try to write 'EID' horizontally, vertically or diagonally to WIN!\n");
+    printf("Player 2, Try to write 'XXX' horizontally, vertically or diagonally to WIN!\n");
     the_game();
     return 0;
 }
