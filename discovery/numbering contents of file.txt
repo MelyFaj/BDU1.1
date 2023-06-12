@@ -1,0 +1,29 @@
+//Must have movie-lista.txt already created in the same folder
+#include<stdio.h>
+#include<stdlib.h>
+
+int main() {
+    int i=1;
+    int c;
+    FILE *pr, *pw;
+    pr=fopen("movie-lista.txt", "r");
+    pw=fopen("movie_list.txt", "w+");
+    if(pr==NULL || pw==NULL){
+        printf("FILE NOT FOUND!!!");
+        exit(1);
+    }
+    while(1){
+        c=fgetc(pr);
+        if(c==EOF)
+            break;
+        if(c=='\n'){
+            fprintf(pw,"\n%d. ", i);
+            i++;
+        }
+        else
+            fputc(c,pw);
+    }
+    fclose(pr);
+    fclose(pw);
+    return 0;
+}
