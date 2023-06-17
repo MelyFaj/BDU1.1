@@ -1,0 +1,128 @@
+/*If you find any bug, do send me an s.s. of your entire played-game*/
+/*
+Game creator: Mehrin Farzana
+Game created on: 17-4-2023
+*/
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+char room[8][8]={"hgrqkrgh","--------","        ","        ","        ","        ","========","HGRQKRGH"};
+int move_num=0;
+
+int the_game();
+void move();
+int check();
+void board();
+
+int main(){
+    printf("Welcome to a game of Chess!\n");
+    //the_game();
+    board();
+    return 0;
+}
+
+
+
+void board(){
+    printf("\n");
+    printf("\n   ---------------------------------\n");
+    for(int i=0; i<8; i++){
+        for(int j=0; j<9; j++){
+            if(j%9==0 && i<8 && j<8)
+                printf("%d  |", 8-i);
+            else
+                printf(" %c |", room[i][j]);
+        }
+        if(i<7)
+            printf("\n   |---|---|---|---|---|---|---|---|\n");
+        else{
+            printf("\n   ---------------------------------\n");
+            printf("     A   B   C   D   E   F   G   H\n");
+        }
+    }
+    printf("\n\n");
+}
+
+/*
+int check(){
+        if((room[0]=='E' && room[1]=='I' && room[2]=='D') || (room[3]=='E' && room[4]=='I' && room[5]=='D') || (room[6]=='E' && room[7]=='I' && room[8]=='D') || (room[0]=='E' && room[3]=='I' && room[6]=='D') || (room[1]=='E' && room[4]=='I' && room[7]=='D') || (room[2]=='E' && room[5]=='I' && room[8]=='D') || (room[0]=='E' && room[4]=='I' && room[8]=='D') || (room[2]=='E' && room[4]=='I' && room[6]=='D')){
+                printf("%s won the match!\n", name[0]);
+                return 0;
+}
+            else if((room[0]==room[1] && room[0]==room[2]) || (room[3]==room[4] && room[3]==room[5]) || (room[6]==room[7] && room[6]==room[8]) || (room[0]==room[3] && room[0]==room[6]) || (room[1]==room[4] && room[1]==room[7]) || (room[2]==room[5] && room[2]==room[8]) || (room[0]==room[4] && room[0]==room[8]) || (room[2]==room[4] && room [2]==room[6]))
+            {
+                printf("%s won the match!\n", name[1]);
+                return 0;
+            }
+    return 1;
+}
+
+void move(){
+    int p;
+    if(move==0)
+        printf("Enter the room number where you want to make your move: ");
+    else if(move%2==1)
+        printf("player 2, Enter room#: ");
+    else if(move%2==0)
+        printf("player 1, Enter room#: ");
+    scanf("%d", &p);
+    if(room[p-1]!='E' && room[p-1]!='I'  && room[p-1]!='D'  && room[p-1]!='X' && p>0 && p<10){
+        if(move%2==0){
+            if(move==0 || move==6)
+                room[p-1]='E';
+            else if(move==2 || move==8)
+                room[p-1]='I';
+            else if(move==4)
+                room[p-1]='D';
+        }
+
+        else if(move%2==1)
+            room[p-1]='X';
+        move++;
+    }
+    else{
+        printf("Invalid! Try again.\n");
+        player_move_against_human();
+    }
+}
+
+int the_game(){
+    int a=1, b=1, flag, enter;
+    char computer[8];
+    flag=enter_name();
+    board();
+    //
+    //    printf("\nharat!\n");
+    //printf("%d\n", flag);
+    if(flag==1){
+        while(a && b){
+        a=check();
+        b=check_draw(a);
+        if(a==0 || b==0) break;
+        player_move_against_computer();
+        board();
+        }
+    }
+    else if(flag==0){
+        while(a && b){
+        a=check();
+        b=check_draw(a);
+        if(a==0 || b==0) break;
+        player_move_against_human();
+        board();
+        }
+    }
+      printf("\n\nWould you like to play again?\nEnter 1 for YES & 0 for NO\n");
+scanf("%d", &enter);
+if(enter){
+    system("cls");
+    strcpy(room, "123456789");
+    move=0;
+    the_game();
+}
+else return 0;
+}
+
+*/
