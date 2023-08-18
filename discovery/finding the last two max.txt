@@ -1,21 +1,25 @@
 #include <stdio.h>
 
-int main() {
-     int n;
+void lastTwoMax(){
+    int n;
+    printf("Enter array size: ");
     scanf("%d", &n);
-    long int a[n],x=0,y=0;
-
+    long int a[n],x=0,y=0,flag=0;
+    printf("Enter array elemnts: ");
     for(int i=0; i<n; i++){
-        scanf("%ld",&a[i]);
-        if(x<a[i])
+        scanf("%ld",&a[i]);  
+        if(x<a[i]){
+            y=x;
             x=a[i];
-        else if(y<a[i])
+        }  
+        if(x>a[i] && y<a[i]){
             y=a[i];
-        if(i==n-1 && y==0)
-            y=a[i-1];
+        }    
     }
+    printf("%d %d\n", x,y);
+}
 
-  printf("%d %d\n", x,y);
-
+int main() {
+    lastTwoMax();
      return 0;
 }
